@@ -1,21 +1,21 @@
 import { createShip } from "../src/logic/ships";
 
 test("Basic ship creation", () => {
-    expect(createShip(4).length).toBe(4);
-    expect(createShip(4).hits).toBe(0);
-    expect(createShip(4).isSunk).toBeFalsy();
+    expect(createShip(4).getLength()).toBe(4);
+    expect(createShip(4).getHits()).toBe(0);
+    expect(createShip(4).checkSunk()).toBeFalsy();
 });
 
 test("Ship hit function", () => {
     const testShip = createShip();
     testShip.hit();
-    expect(testShip.hits).toBe(1);
+    expect(testShip.getHits()).toBe(1);
 });
 
 test("Ship hit function when max hits reached", () => {
     const testShip = createShip(1);
     testShip.hit();
-    expect(testShip.hits).toBe(1);
+    expect(testShip.getHits()).toBe(1);
 });
 
 test("Check if ship is sunk (true)", () => {
@@ -32,8 +32,7 @@ test("Check if ship is sunk (false)", () => {
 test("Reassign ships' sunk status", () => {
     const testShip = createShip();
     testShip.hit();
-    testShip.refreshIsSunk();
-    expect(testShip.isSunk).toBeTruthy();
+    expect(testShip.checkSunk()).toBeTruthy();
 });
 
 test("Refresh sunk status automatically after hits", () => {

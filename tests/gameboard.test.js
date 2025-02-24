@@ -3,8 +3,8 @@ import { createShip } from "../src/logic/ships";
 
 const playerOne = gameboard();
 const playerTwo = gameboard();
-const carrier = createShip(5);
-const destroyer = createShip(3);
+const carrier = createShip("test", 5);
+const destroyer = createShip("test", 3);
 
 test("Ship placing with x orientation", () => {
     playerOne.assignShip(carrier, 0, 0);

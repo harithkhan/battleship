@@ -34,4 +34,11 @@ test("Reassign ships' sunk status", () => {
     testShip.hit();
     testShip.refreshIsSunk();
     expect(testShip.isSunk).toBeTruthy();
-})
+});
+
+test("Refresh sunk status automatically after hits", () => {
+    const testShip = createShip();
+    expect(testShip.checkSunk()).toBeFalsy();
+    testShip.hit();
+    expect(testShip.checkSunk()).toBeTruthy();
+});

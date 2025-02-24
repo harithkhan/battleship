@@ -22,7 +22,7 @@ test("Ship placing with x orientation", () => {
     expect(playerOne.getBoard()[8][6][1]).toBe("water");
 });
 
-test("Ship placing with x orientation", () => {
+test("Ship placing with y orientation", () => {
     playerTwo.assignShip(carrier, 0, 0, "y");
     expect(playerTwo.getBoard()[0][0][1]).toBe("ship");
     expect(playerTwo.getBoard()[0][1][1]).toBe("ship");

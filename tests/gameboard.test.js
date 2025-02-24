@@ -30,4 +30,10 @@ test("Ship placing with x orientation", () => {
     expect(playerTwo.getBoard()[0][3][1]).toBe("ship");
     expect(playerTwo.getBoard()[0][4][1]).toBe("ship");
     expect(playerTwo.getBoard()[0][5][1]).toBe("water");
+    playerTwo.assignShip(destroyer, 5, 2, "y");
+    expect(playerTwo.getBoard()[5][1][1]).toBe("water");
+    expect(playerTwo.getBoard()[5][2][1]).toBe("ship");
+    expect(playerTwo.getBoard()[5][3][1]).toBe("ship");
+    expect(playerTwo.getBoard()[5][4][1]).toBe("ship");
+    expect(playerTwo.getBoard()[5][5][1]).toBe("water");
 });

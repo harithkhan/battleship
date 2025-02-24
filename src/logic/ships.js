@@ -1,37 +1,22 @@
-const assignHit = () => ({
-    hit() {
-        if (this.hits < this.length) {
-            this.hits += 1;
-            this.refreshIsSunk();
+export const createShip = (length = 1) => {
+    let hits = 0;
+    const getLength = () => length;
+    const getHits = () => hits;
+    const hit = () => {
+        if (hits < length) {
+            hits += 1;
         }
-    },
-});
-
-const assignCheckSunk = () => ({
-    checkSunk() {
-        if (this.hits === this.length) {
+    };
+    const checkSunk = () => {
+        if (hits === length) {
             return true;
         }
         return false;
-    },
-});
-
-const assignRefreshIsSunk = () => ({
-    refreshIsSunk() {
-        const sunkStatus = this.checkSunk();
-        if (sunkStatus) {
-            this.isSunk = true;
-        } else {
-            this.isSunk = false;
-        }
-    },
-});
-
-export const createShip = (length = 1) => ({
-    length,
-    hits: 0,
-    isSunk: false,
-    ...assignHit(),
-    ...assignCheckSunk(),
-    ...assignRefreshIsSunk(),
-});
+    };
+    return {
+        getLength,
+        getHits,
+        hit,
+        checkSunk,
+    };
+};

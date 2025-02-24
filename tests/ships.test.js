@@ -17,3 +17,14 @@ test("Ship hit function when max hits reached", () => {
     testShip.hit();
     expect(testShip.hits).toBe(1);
 });
+
+test("Check if ship is sunk (true)", () => {
+    const testShip = createShip();
+    testShip.hit();
+    expect(testShip.checkSunk()).toBeTruthy();
+});
+
+test("Check if ship is sunk (false)", () => {
+    const testShip = createShip();
+    expect(testShip.checkSunk()).toBeFalsy();
+})

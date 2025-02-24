@@ -27,4 +27,11 @@ test("Check if ship is sunk (true)", () => {
 test("Check if ship is sunk (false)", () => {
     const testShip = createShip();
     expect(testShip.checkSunk()).toBeFalsy();
+});
+
+test("Reassign ships' sunk status", () => {
+    const testShip = createShip();
+    testShip.hit();
+    testShip.refreshIsSunk();
+    expect(testShip.isSunk).toBeTruthy();
 })

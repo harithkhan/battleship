@@ -1,4 +1,8 @@
-import { getGameState, gameStart, gameOver } from "../src/logic/game-controller";
+import {
+    getGameState,
+    gameStart,
+    gameOver,
+} from "../src/logic/game-controller";
 
 test("Get game state", () => {
     expect(getGameState()).toEqual({

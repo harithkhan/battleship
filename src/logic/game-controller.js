@@ -26,3 +26,11 @@ export const gameOver = () => {
     gameState.gameOver = true;
     gameState.gameStart = false;
 };
+
+export const assignPlayerOne = (player) => {
+    gameState.players.playerOne = player;
+};
+
+export const assignPlayerTwo = (player) => {
+    gameState.players.playerTwo = player;
+};

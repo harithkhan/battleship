@@ -1,4 +1,4 @@
-import { getGameState, gameStart } from "../src/logic/game-controller";
+import { getGameState, gameStart, gameOver } from "../src/logic/game-controller";
 
 test("Get game state", () => {
     expect(getGameState()).toEqual({
@@ -16,4 +16,11 @@ test("Get game state", () => {
 test("Game can start", () => {
     gameStart();
     expect(getGameState().gameStart).toBeTruthy();
+});
+
+test("Game can end", () => {
+    gameStart();
+    gameOver();
+    expect(getGameState().gameStart).toBeFalsy();
+    expect(getGameState().gameOver).toBeTruthy();
 });

@@ -10,6 +10,10 @@ export const gameboard = () => {
 
     const getBoard = () => board;
 
+    const ships = {};
+
+    const getShips = () => ships;
+
     const assignShip = (ship, xCoordinate, yCoordinate, orientation = "x") => {
         if (orientation === "x") {
             for (let i = 0; i < ship.getLength(); i++) {
@@ -21,19 +25,21 @@ export const gameboard = () => {
                 board[xCoordinate][yCoordinate + i][1] = ship.getName();
             }
         }
+        ships[ship.getName()] = ship;
     };
 
     // const receiveAttack = (xCoordinate, yCoordinate) => {
     //     if (board[xCoordinate][yCoordinate][0] === "not hit") {
     //         board[xCoordinate][yCoordinate][0] = "hit";
     //     }
-    //     if (board[xCoordinate][yCoordinate][1] === "ship") {
+    //     if (board[xCoordinate][yCoordinate][1] !== "water") {
 
     //     }
     // };
 
     return {
         getBoard,
+        getShips,
         assignShip,
         // receiveAttack,
     };

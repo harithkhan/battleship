@@ -126,4 +126,12 @@ describe("Check whether all ships have been sunk", () => {
     test("isGameOver returns true if all ships sunk", () => {
         expect(testFour.isGameOver()).toBeTruthy();
     });
+    test("Every hit checks game over", () => {
+        const testFive = gameboard();
+        const destroyerFive = createShip("destroyerFive", 3);
+        testFive.assignShip(destroyerFive, 0, 0);
+        testFive.receiveAttack(0, 0);
+        testFive.receiveAttack(1, 0);
+        expect(testFive.receiveAttack(2, 0)).toBe("Game Over!");
+    });
 });

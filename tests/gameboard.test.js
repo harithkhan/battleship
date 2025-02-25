@@ -88,3 +88,35 @@ describe("Ships hit with receiveAttack()", () => {
         expect(testBoardOne.getBoard()[8][8]).toEqual(["miss", "water"]);
     });
 });
+
+describe("Check whether all ships have been sunk", () => {
+    const testThree = gameboard();
+    const testFour = gameboard();
+    const carrierThree = createShip("carrierThree", 5);
+    const carrierFour = createShip("carrierFour", 5);
+    const destroyerThree = createShip("destroyerThree", 3);
+    const destroyerFour = createShip("destroyerFour", 3);
+    testThree.assignShip(carrierThree, 0, 0);
+    testThree.assignShip(destroyerThree, 0, 1, "y");
+    testFour.assignShip(carrierFour, 0, 0);
+    testFour.assignShip(destroyerFour, 0, 1, "y");
+    testThree.receiveAttack(0, 0);
+    testThree.receiveAttack(1, 0);
+    testThree.receiveAttack(2, 0);
+    testThree.receiveAttack(3, 0);
+    testThree.receiveAttack(4, 0);
+    test("isGameOver returns false if not all ships sunk", () => {
+        expect(testThree.isGameOver()).toBeFalsy();
+    });
+    testFour.receiveAttack(0, 0);
+    testFour.receiveAttack(1, 0);
+    testFour.receiveAttack(2, 0);
+    testFour.receiveAttack(3, 0);
+    testFour.receiveAttack(4, 0);
+    testFour.receiveAttack(0, 1);
+    testFour.receiveAttack(0, 2);
+    testFour.receiveAttack(0, 3);
+    test("isGameOver returns true if all ships sunk", () => {
+        expect(testFour.isGameOver()).toBeTruthy();
+    });
+});

@@ -83,4 +83,8 @@ describe("Ships hit with receiveAttack()", () => {
         expect(testBoardOne.getBoard()[1][0][0]).toBe("hit");
         expect(testBoardOne.getBoard()[6][6][0]).toBe("not hit");
     });
+    test("Miss status on gameboard visible when miss", () => {
+        testBoardOne.receiveAttack(8, 8);
+        expect(testBoardOne.getBoard()[8][8]).toEqual(["miss", "water"]);
+    });
 });

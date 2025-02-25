@@ -3,8 +3,8 @@ import { createShip } from "../src/logic/ships";
 
 const playerOne = gameboard();
 const playerTwo = gameboard();
-const carrier = createShip("test", 5);
-const destroyer = createShip("test", 3);
+const carrier = createShip("carrier", 5);
+const destroyer = createShip("destroyer", 3);
 
 test("Ship placing with x orientation", () => {
     playerOne.assignShip(carrier, 0, 0);
@@ -37,3 +37,18 @@ test("Ship placing with y orientation", () => {
     expect(playerTwo.getBoard()[5][4][1]).toBe(destroyer.getName());
     expect(playerTwo.getBoard()[5][5][1]).toBe("water");
 });
+
+test("Newly assigned ships get assigned to ships object in board", () => {
+    expect(playerOne.getShips()).toHaveProperty("carrier");
+    expect(playerOne.getShips()).toHaveProperty("destroyer");
+    expect(playerTwo.getShips()).toHaveProperty("carrier");
+    expect(playerTwo.getShips()).toHaveProperty("destroyer");
+});
+
+test("Newly assigned ships methods in ships object work", () => {
+    expect(playerOne.getShips().carrier.getName()).toBe("carrier");
+    expect(playerOne.getShips().carrier.getLength()).toBe(5);
+    playerOne.getShips().carrier.hit();
+    expect(playerOne.getShips().carrier.getHits()).toBe(1);
+    expect(playerOne.getShips().carrier.checkSunk()).toBeFalsy();
+})

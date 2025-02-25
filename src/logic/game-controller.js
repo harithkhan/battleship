@@ -18,6 +18,6 @@ const gameState = {
 
 export const getGameState = () => gameState;
 
-// export const gameStart = () => {
-//     gameState.gameStart = true;
-// };
+export const gameStart = () => {
+    gameState.gameStart = true;
+};

@@ -51,4 +51,36 @@ test("Newly assigned ships methods in ships object work", () => {
     playerOne.getShips().carrier.hit();
     expect(playerOne.getShips().carrier.getHits()).toBe(1);
     expect(playerOne.getShips().carrier.checkSunk()).toBeFalsy();
-})
+});
+
+describe("Ships hit with receiveAttack()", () => {
+    const testBoardOne = gameboard();
+    const testBoardTwo = gameboard();
+    const submarine = createShip("submarine", 3);
+    const battleship = createShip("battleship", 4);
+    testBoardOne.assignShip(submarine, 0, 0, "x");
+    testBoardTwo.assignShip(battleship, 0, 0, "y");
+    testBoardOne.receiveAttack(1, 0);
+    testBoardTwo.receiveAttack(0, 0);
+    testBoardTwo.receiveAttack(0, 1);
+    testBoardTwo.receiveAttack(0, 2);
+    testBoardTwo.receiveAttack(0, 3);
+    test("Ships get hit correctly", () => {
+        expect(testBoardOne.getShips().submarine.getHits()).toBe(1);
+    });
+    test("Ships can sink", () => {
+        expect(testBoardOne.getShips().submarine.checkSunk()).toBeFalsy();
+        expect(testBoardTwo.getShips().battleship.checkSunk()).toBeTruthy();
+    });
+    test("Ships can't get hit twice", () => {
+        testBoardOne.receiveAttack(1, 0);
+        expect(testBoardOne.receiveAttack(1, 0)).toBe(
+            "This position cannot be attacked"
+        );
+        expect(testBoardOne.getShips().submarine.getHits()).toBe(1);
+    });
+    test("Hit status on gameboard changes when hit", () => {
+        expect(testBoardOne.getBoard()[1][0][0]).toBe("hit");
+        expect(testBoardOne.getBoard()[6][6][0]).toBe("not hit");
+    });
+});

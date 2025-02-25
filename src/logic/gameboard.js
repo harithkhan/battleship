@@ -14,16 +14,44 @@ export const gameboard = () => {
 
     const assignShip = (ship, xCoordinate, yCoordinate, orientation = "x") => {
         if (orientation === "x") {
+            const targetCoordinates = [];
             for (let i = 0; i < ship.getLength(); i++) {
-                board[xCoordinate + i][yCoordinate][1] = ship.getName();
+                targetCoordinates.push([xCoordinate + i, yCoordinate]);
+            }
+            let isTaken = false;
+            targetCoordinates.forEach((target) => {
+                if (board[target[0]][target[1]][1] !== "water") {
+                    isTaken = true;
+                }
+            });
+            if (!isTaken) {
+                targetCoordinates.forEach((target) => {
+                    board[target[0]][target[1]][1] = ship.getName();
+                });
+                ships[ship.getName()] = ship;
+                return `${ship.getName()} assigned to coordinates ${targetCoordinates}`;
             }
         }
         if (orientation === "y") {
+            const targetCoordinates = [];
             for (let i = 0; i < ship.getLength(); i++) {
-                board[xCoordinate][yCoordinate + i][1] = ship.getName();
+                targetCoordinates.push([xCoordinate, yCoordinate + i]);
+            }
+            let isTaken = false;
+            targetCoordinates.forEach((target) => {
+                if (board[target[0]][target[1]][1] !== "water") {
+                    isTaken = true;
+                }
+            });
+            if (!isTaken) {
+                targetCoordinates.forEach((target) => {
+                    board[target[0]][target[1]][1] = ship.getName();
+                });
+                ships[ship.getName()] = ship;
+                return `${ship.getName()} assigned to coordinates ${targetCoordinates}`;
             }
         }
-        ships[ship.getName()] = ship;
+        return "A ship has already been assigned to that space";
     };
 
     const receiveAttack = (xCoordinate, yCoordinate) => {

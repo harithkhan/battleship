@@ -45,10 +45,22 @@ export const gameboard = () => {
         return "This position cannot be attacked";
     };
 
+    const isGameOver = () => {
+        let status = true;
+        const shipValues = Object.values(ships);
+        shipValues.forEach((ship) => {
+            if (!ship.checkSunk()) {
+                status = false;
+            }
+        });
+        return status;
+    };
+
     return {
         getBoard,
         getShips,
         assignShip,
         receiveAttack,
+        isGameOver,
     };
 };

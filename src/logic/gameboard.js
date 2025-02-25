@@ -1,5 +1,3 @@
-import { createShip } from "./ships";
-
 export const gameboard = () => {
     const board = [];
     for (let i = 0; i < 10; i++) {
@@ -28,19 +26,29 @@ export const gameboard = () => {
         ships[ship.getName()] = ship;
     };
 
-    // const receiveAttack = (xCoordinate, yCoordinate) => {
-    //     if (board[xCoordinate][yCoordinate][0] === "not hit") {
-    //         board[xCoordinate][yCoordinate][0] = "hit";
-    //     }
-    //     if (board[xCoordinate][yCoordinate][1] !== "water") {
-
-    //     }
-    // };
+    const receiveAttack = (xCoordinate, yCoordinate) => {
+        if (
+            board[xCoordinate][yCoordinate][0] === "not hit" &&
+            board[xCoordinate][yCoordinate][1] === "water"
+        ) {
+            board[xCoordinate][yCoordinate][0] = "miss";
+            return "Miss! No ships were hit";
+        }
+        if (
+            board[xCoordinate][yCoordinate][0] === "not hit" &&
+            board[xCoordinate][yCoordinate][1] !== "water"
+        ) {
+            board[xCoordinate][yCoordinate][0] = "hit";
+            ships[board[xCoordinate][yCoordinate][1]].hit();
+            return "A ship was hit!";
+        }
+        return "This position cannot be attacked";
+    };
 
     return {
         getBoard,
         getShips,
         assignShip,
-        // receiveAttack,
+        receiveAttack,
     };
 };

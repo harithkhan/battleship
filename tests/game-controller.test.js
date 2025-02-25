@@ -1,4 +1,4 @@
-import { getGameState } from "../src/logic/game-controller";
+import { getGameState, gameStart } from "../src/logic/game-controller";
 
 test("Get game state", () => {
     expect(getGameState()).toEqual({
@@ -11,4 +11,9 @@ test("Get game state", () => {
         playerTurn: null,
         gameWinner: null,
     });
+});
+
+test("Game can start", () => {
+    gameStart();
+    expect(getGameState().gameStart).toBeTruthy();
 });

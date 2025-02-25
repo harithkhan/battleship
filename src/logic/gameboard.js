@@ -54,6 +54,17 @@ export const gameboard = () => {
         return "A ship has already been assigned to that space";
     };
 
+    const isGameOver = () => {
+        let status = true;
+        const shipValues = Object.values(ships);
+        shipValues.forEach((ship) => {
+            if (!ship.checkSunk()) {
+                status = false;
+            }
+        });
+        return status;
+    };
+
     const receiveAttack = (xCoordinate, yCoordinate) => {
         if (
             board[xCoordinate][yCoordinate][0] === "not hit" &&
@@ -68,20 +79,12 @@ export const gameboard = () => {
         ) {
             board[xCoordinate][yCoordinate][0] = "hit";
             ships[board[xCoordinate][yCoordinate][1]].hit();
+            if (isGameOver()) {
+                return "Game Over!";
+            }
             return "A ship was hit!";
         }
         return "This position cannot be attacked";
-    };
-
-    const isGameOver = () => {
-        let status = true;
-        const shipValues = Object.values(ships);
-        shipValues.forEach((ship) => {
-            if (!ship.checkSunk()) {
-                status = false;
-            }
-        });
-        return status;
     };
 
     return {

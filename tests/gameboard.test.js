@@ -5,6 +5,7 @@ const playerOne = gameboard();
 const playerTwo = gameboard();
 const carrier = createShip("carrier", 5);
 const destroyer = createShip("destroyer", 3);
+const patrolBoat = createShip("patrolBoat", 2);
 
 test("Ship placing with x orientation", () => {
     playerOne.assignShip(carrier, 0, 0);
@@ -51,6 +52,12 @@ test("Newly assigned ships methods in ships object work", () => {
     playerOne.getShips().carrier.hit();
     expect(playerOne.getShips().carrier.getHits()).toBe(1);
     expect(playerOne.getShips().carrier.checkSunk()).toBeFalsy();
+});
+
+test("New ships cannot be assigned to taken coordinates", () => {
+    expect(playerOne.assignShip(patrolBoat, 0, 0)).toBe(
+        "A ship has already been assigned to that space"
+    );
 });
 
 describe("Ships hit with receiveAttack()", () => {

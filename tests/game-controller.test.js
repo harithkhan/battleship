@@ -4,9 +4,17 @@ import {
     gameStart,
     gameOver,
     resetGameState,
-    // assignPlayerOne,
-    // assignPlayerTwo,
+    assignPlayerOne,
+    assignPlayerTwo,
 } from "../src/logic/game-controller";
+
+beforeEach(() => {
+    resetGameState();
+});
+
+afterEach(() => {
+    resetGameState();
+});
 
 test("Get game state", () => {
     expect(getGameState()).toEqual({
@@ -53,6 +61,7 @@ test("Game can reset", () => {
 //     const computerPlayer = players("computer", "Computer");
 //     assignPlayerOne(humanPlayerOne);
 //     assignPlayerTwo(computerPlayer);
+//     console.log(getGameState());
 //     test("Can assign players to game", () => {
 //         expect(getGameState().players.playerOne.getName()).toBe("Player 1");
 //         expect(getGameState().players.playerTwo.getName()).toBe("Computer");

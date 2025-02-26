@@ -73,3 +73,7 @@ body {
     height: 3rem;
     border: 1px solid black;
 }
+
+[data-space-state="water"] {
+    background-color: aqua;
+}

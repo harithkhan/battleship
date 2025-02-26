@@ -1,5 +1,5 @@
 import "./style.css";
-import { createPlayerOneBoard, createPlayerTwoBoard } from "./ui/player-boards";
+import { createPlayerOneBoard, createPlayerTwoBoard } from "./ui/create-boards";
 
 createPlayerOneBoard();
 createPlayerTwoBoard();

@@ -29,6 +29,10 @@ export const assignPlayerTwo = (player) => {
     gameState.players.playerTwo = player;
 };
 
+export const getPlayerOne = () => gameState.players.playerOne;
+
+export const getPlayerTwo = () => gameState.players.playerTwo;
+
 export const resetGameState = () => {
     gameState.gameStart = false;
     gameState.gameOver = false;

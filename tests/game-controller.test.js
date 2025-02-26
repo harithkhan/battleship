@@ -1,6 +1,8 @@
 import { players } from "../src/logic/players";
 import {
     getGameState,
+    getGameMode,
+    setGameMode,
     gameStart,
     gameOver,
     resetGameState,
@@ -24,6 +26,7 @@ afterEach(() => {
 
 test("Get game state", () => {
     expect(getGameState()).toEqual({
+        gameMode: null,
         gameStart: false,
         gameOver: false,
         players: {
@@ -33,6 +36,17 @@ test("Get game state", () => {
         playerTurn: null,
         gameWinner: null,
     });
+});
+
+test("Game mode is null before game starts", () => {
+    expect(getGameMode()).toBeFalsy();
+});
+
+test("Game mode can be set", () => {
+    setGameMode("singlePlayer");
+    expect(getGameMode()).toBe("singlePlayer");
+    setGameMode("twoPlayer");
+    expect(getGameMode()).toBe("twoPlayer");
 });
 
 test("Game can start", () => {
@@ -51,6 +65,7 @@ test("Game can reset", () => {
     gameStart();
     resetGameState();
     expect(getGameState()).toEqual({
+        gameMode: null,
         gameStart: false,
         gameOver: false,
         players: {

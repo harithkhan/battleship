@@ -56,21 +56,23 @@ test("Game can reset", () => {
     });
 });
 
-// describe("Player assignments", () => {
-//     const humanPlayerOne = players("human", "Player 1");
-//     const computerPlayer = players("computer", "Computer");
-//     assignPlayerOne(humanPlayerOne);
-//     assignPlayerTwo(computerPlayer);
-//     console.log(getGameState());
-//     test("Can assign players to game", () => {
-//         expect(getGameState().players.playerOne.getName()).toBe("Player 1");
-//         expect(getGameState().players.playerTwo.getName()).toBe("Computer");
-//     });
-//     test("Before game starts, player turn is null", () => {
-//         expect(getGameState().playerTurn).toBe(null);
-//     });
-//     test("Game start assigns first player correctly", () => {
-//         gameStart();
-//         expect(getGameState().playerTurn.getName()).toBe("Player 1");
-//     });
-// });
+describe("Player assignments", () => {
+    beforeEach(() => {
+        const humanPlayerOne = players("human", "Player 1");
+        const computerPlayer = players("computer", "Computer");
+        assignPlayerOne(humanPlayerOne);
+        assignPlayerTwo(computerPlayer);
+    });
+    test("Can assign players to game", () => {
+        console.log(getGameState().players.playerOne);
+        expect(getGameState().players.playerOne.getName()).toBe("Player 1");
+        expect(getGameState().players.playerTwo.getName()).toBe("Computer");
+    });
+    test("Before game starts, player turn is null", () => {
+        expect(getGameState().playerTurn).toBe(null);
+    });
+    test("Game start assigns first player correctly", () => {
+        gameStart();
+        expect(getGameState().playerTurn.getName()).toBe("Player 1");
+    });
+});

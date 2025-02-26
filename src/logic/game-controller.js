@@ -43,6 +43,21 @@ export const switchTurn = () => {
     }
 };
 
+export const getGameWinner = () => gameState.gameWinner;
+
+export const setGameWinner = (winner) => {
+    if (getGameWinner()) {
+        throw new Error(
+            "Cannot declare game winner once winner already declared"
+        );
+    }
+    if (!gameState.gameStart) {
+        throw new Error("Cannot set game winner before game starts");
+    }
+    gameState.gameWinner = winner;
+    gameOver();
+};
+
 export const resetGameState = () => {
     gameState.gameStart = false;
     gameState.gameOver = false;

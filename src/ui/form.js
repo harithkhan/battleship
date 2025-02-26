@@ -4,12 +4,15 @@ const twoPlayerButton = document.getElementById("two-player");
 const playerOneInput = document.getElementById("input-player-1");
 
 function handleTwoPlayerClick() {
-    const playerTwoInput = document.createElement("input");
-    playerTwoInput.id = "input-player-2";
-    playerTwoInput.name = "input-player-2";
-    playerTwoInput.value = "";
-    playerTwoInput.placeholder = "Player 2";
-    playerOneInput.insertAdjacentElement("afterend", playerTwoInput);
+    const previousInput = document.getElementById("input-player-2");
+    if (!previousInput) {
+        const playerTwoInput = document.createElement("input");
+        playerTwoInput.id = "input-player-2";
+        playerTwoInput.name = "input-player-2";
+        playerTwoInput.value = "";
+        playerTwoInput.placeholder = "Player 2";
+        playerOneInput.insertAdjacentElement("afterend", playerTwoInput);
+    }
 }
 
 function handleSinglePlayerClick() {

@@ -8,6 +8,7 @@ export function createPlayerOneBoard() {
         gridBox.className = "grid-box";
         gridBox.dataset.coordinates = initialCoordinates.join(",");
         gridBox.dataset.spaceState = "water";
+        gridBox.dataset.hitStatus = "not hit";
         playerOneBoard.appendChild(gridBox);
         initialCoordinates = [initialCoordinates[0] + 1, initialCoordinates[1]];
         if (initialCoordinates[0] > 9) {
@@ -23,6 +24,7 @@ export function createPlayerTwoBoard() {
         gridBox.className = "grid-box";
         gridBox.dataset.coordinates = initialCoordinates.join(",");
         gridBox.dataset.spaceState = "water";
+        gridBox.dataset.hitStatus = "not hit";
         playerTwoBoard.appendChild(gridBox);
         initialCoordinates = [initialCoordinates[0] + 1, initialCoordinates[1]];
         if (initialCoordinates[0] > 9) {

@@ -63,7 +63,7 @@ body {
 }
 
 /* Main Game Display */
-.game-information-display {
+.game-information-container {
     width: 25rem;
     height: 4rem;
     border: 1px solid black;

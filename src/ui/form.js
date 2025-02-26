@@ -1,5 +1,6 @@
 import * as gameController from "../logic/game-controller";
 import { players } from "../logic/players";
+import { displayPlayerTurn } from "./information-display";
 
 const twoPlayerButton = document.getElementById("two-player");
 const playerOneInput = document.getElementById("input-player-1");
@@ -50,6 +51,7 @@ function handleStartClick(event) {
         gameController.gameStart();
         dialog.close();
     }
+    displayPlayerTurn();
 }
 
 export function attachFormEventListeners() {

@@ -1,6 +1,8 @@
 import * as gameController from "../logic/game-controller";
 import { players } from "../logic/players";
 import { displayPlayerTurn } from "./information-display";
+import { assignShipsTest } from "./populate-ships-test";
+import { renderPlayerOneBoard, renderPlayerTwoBoard } from "./render.boards";
 
 const twoPlayerButton = document.getElementById("two-player");
 const playerOneInput = document.getElementById("input-player-1");
@@ -38,6 +40,9 @@ function handleStartClick(event) {
         const playerTwo = players("computer", "Computer");
         gameController.assignPlayerOne(playerOne);
         gameController.assignPlayerTwo(playerTwo);
+        assignShipsTest();
+        renderPlayerOneBoard();
+        renderPlayerTwoBoard();
         gameController.gameStart();
         dialog.close();
     }
@@ -48,6 +53,9 @@ function handleStartClick(event) {
         const playerTwo = players("human", playerTwoName);
         gameController.assignPlayerOne(playerOne);
         gameController.assignPlayerTwo(playerTwo);
+        assignShipsTest();
+        renderPlayerOneBoard();
+        renderPlayerTwoBoard();
         gameController.gameStart();
         dialog.close();
     }

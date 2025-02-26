@@ -94,6 +94,14 @@ body {
     background-color: aqua;
 }
 
+[data-space-state="water"][data-hit-status="miss"] {
+    background-color: gray;
+}
+
 [data-space-state="ship"] {
   background-color: green;
+}
+
+[data-space-state="ship"][data-hit-status="hit"] {
+    background-color: red;
 }

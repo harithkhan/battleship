@@ -7,6 +7,7 @@ export function createPlayerOneBoard() {
         const gridBox = document.createElement("div");
         gridBox.className = "grid-box";
         gridBox.dataset.coordinates = initialCoordinates.join(",");
+        gridBox.dataset.spaceState = "water";
         playerOneBoard.appendChild(gridBox);
         initialCoordinates = [initialCoordinates[0] + 1, initialCoordinates[1]];
         if (initialCoordinates[0] > 9) {
@@ -21,6 +22,7 @@ export function createPlayerTwoBoard() {
         const gridBox = document.createElement("div");
         gridBox.className = "grid-box";
         gridBox.dataset.coordinates = initialCoordinates.join(",");
+        gridBox.dataset.spaceState = "water";
         playerTwoBoard.appendChild(gridBox);
         initialCoordinates = [initialCoordinates[0] + 1, initialCoordinates[1]];
         if (initialCoordinates[0] > 9) {

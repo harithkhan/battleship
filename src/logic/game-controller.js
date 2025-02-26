@@ -1,4 +1,5 @@
 const gameState = {
+    gameMode: null,
     gameStart: false,
     gameOver: false,
     players: {
@@ -10,6 +11,12 @@ const gameState = {
 };
 
 export const getGameState = () => gameState;
+
+export const getGameMode = () => gameState.gameMode;
+
+export const setGameMode = (gameMode) => {
+    gameState.gameMode = gameMode;
+};
 
 export const gameStart = () => {
     gameState.gameStart = true;
@@ -59,6 +66,7 @@ export const setGameWinner = (winner) => {
 };
 
 export const resetGameState = () => {
+    gameState.gameMode = null;
     gameState.gameStart = false;
     gameState.gameOver = false;
     gameState.players.playerOne = null;

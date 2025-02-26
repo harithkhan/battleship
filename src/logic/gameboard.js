@@ -1,3 +1,5 @@
+import { switchTurn } from "./game-controller";
+
 export const gameboard = () => {
     const board = [];
     for (let i = 0; i < 10; i++) {
@@ -71,6 +73,7 @@ export const gameboard = () => {
             board[xCoordinate][yCoordinate][1] === "water"
         ) {
             board[xCoordinate][yCoordinate][0] = "miss";
+            switchTurn();
             return "Miss! No ships were hit";
         }
         if (
@@ -79,6 +82,7 @@ export const gameboard = () => {
         ) {
             board[xCoordinate][yCoordinate][0] = "hit";
             ships[board[xCoordinate][yCoordinate][1]].hit();
+            switchTurn();
             if (isGameOver()) {
                 return "Game Over!";
             }

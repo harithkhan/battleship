@@ -8,6 +8,8 @@ import {
     assignPlayerTwo,
     getPlayerOne,
     getPlayerTwo,
+    getPlayerTurn,
+    switchTurn,
 } from "../src/logic/game-controller";
 
 beforeEach(() => {
@@ -74,7 +76,7 @@ describe("Player assignments", () => {
     });
     test("Game start assigns first player correctly", () => {
         gameStart();
-        expect(getGameState().playerTurn.getName()).toBe("Player 1");
+        expect(getPlayerTurn().getName()).toBe("Player 1");
     });
 });
 
@@ -94,7 +96,26 @@ describe("Get player info", () => {
         expect(getPlayerTwo().getType()).toBe("computer");
     });
     test("Get player board", () => {
-        console.log(getPlayerOne().getBoard());
         expect(getPlayerOne().getBoard().getBoard().length).toBe(10);
+    });
+});
+
+describe("Player turns", () => {
+    beforeEach(() => {
+        const humanPlayerOne = players("human", "Player 1");
+        const computerPlayer = players("computer", "Computer");
+        assignPlayerOne(humanPlayerOne);
+        assignPlayerTwo(computerPlayer);
+    });
+    test("Get player turn", () => {
+        expect(getPlayerTurn()).toBe(null);
+        gameStart();
+        expect(getPlayerTurn().getName()).toBe("Player 1");
+    });
+    test("Switch turns", () => {
+        gameStart();
+        expect(getPlayerTurn().getName()).toBe("Player 1");
+        switchTurn();
+        expect(getPlayerTurn().getName()).toBe("Computer");
     });
 });

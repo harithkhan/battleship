@@ -37,4 +37,39 @@ h1, h2, h3, h4, h5, h6 {
 }
 /* Reset Ends */
 
+body {
+    width: 100%;
+    min-width: 60rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+
+.game-information-display {
+    width: 25rem;
+    height: 4rem;
+    border: 1px solid black;
+}
+
+.game-container {
+    display: flex;
+    gap: 2rem;
+}
+
+.player-one-board-container,
+.player-two-board-container {
+    width: 30rem;
+    height: 30rem;
+    border: 1px solid black;
+    display: grid;
+    grid-template-columns: repeat(10, 3rem);
+    grid-template-rows: repeat(10, 3rem);
+}
+
+.grid-box {
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid black;
+}

@@ -21,13 +21,13 @@ export const gameOver = () => {
     gameState.gameStart = false;
 };
 
-// export const assignPlayerOne = (player) => {
-//     gameState.players.playerOne = player;
-// };
+export const assignPlayerOne = (player) => {
+    gameState.players.playerOne = player;
+};
 
-// export const assignPlayerTwo = (player) => {
-//     gameState.players.playerTwo = player;
-// };
+export const assignPlayerTwo = (player) => {
+    gameState.players.playerTwo = player;
+};
 
 export const resetGameState = () => {
     gameState.gameStart = false;

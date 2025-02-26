@@ -6,6 +6,8 @@ import {
     resetGameState,
     assignPlayerOne,
     assignPlayerTwo,
+    getPlayerOne,
+    getPlayerTwo,
 } from "../src/logic/game-controller";
 
 beforeEach(() => {
@@ -64,9 +66,8 @@ describe("Player assignments", () => {
         assignPlayerTwo(computerPlayer);
     });
     test("Can assign players to game", () => {
-        console.log(getGameState().players.playerOne);
-        expect(getGameState().players.playerOne.getName()).toBe("Player 1");
-        expect(getGameState().players.playerTwo.getName()).toBe("Computer");
+        expect(getPlayerOne().getName()).toBe("Player 1");
+        expect(getPlayerTwo().getName()).toBe("Computer");
     });
     test("Before game starts, player turn is null", () => {
         expect(getGameState().playerTurn).toBe(null);
@@ -74,5 +75,26 @@ describe("Player assignments", () => {
     test("Game start assigns first player correctly", () => {
         gameStart();
         expect(getGameState().playerTurn.getName()).toBe("Player 1");
+    });
+});
+
+describe("Get player info", () => {
+    beforeEach(() => {
+        const humanPlayerOne = players("human", "Player 1");
+        const computerPlayer = players("computer", "Computer");
+        assignPlayerOne(humanPlayerOne);
+        assignPlayerTwo(computerPlayer);
+    });
+    test("Get player name", () => {
+        expect(getPlayerOne().getName()).toBe("Player 1");
+        expect(getPlayerTwo().getName()).toBe("Computer");
+    });
+    test("Get player type", () => {
+        expect(getPlayerOne().getType()).toBe("human");
+        expect(getPlayerTwo().getType()).toBe("computer");
+    });
+    test("Get player board", () => {
+        console.log(getPlayerOne().getBoard());
+        expect(getPlayerOne().getBoard().getBoard().length).toBe(10);
     });
 });

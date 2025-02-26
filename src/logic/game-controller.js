@@ -33,6 +33,16 @@ export const getPlayerOne = () => gameState.players.playerOne;
 
 export const getPlayerTwo = () => gameState.players.playerTwo;
 
+export const getPlayerTurn = () => gameState.playerTurn;
+
+export const switchTurn = () => {
+    if (gameState.playerTurn === gameState.players.playerOne) {
+        gameState.playerTurn = gameState.players.playerTwo;
+    } else if (gameState.playerTurn === gameState.players.playerTwo) {
+        gameState.playerTurn = gameState.players.playerOne;
+    }
+};
+
 export const resetGameState = () => {
     gameState.gameStart = false;
     gameState.gameOver = false;

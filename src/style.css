@@ -74,6 +74,10 @@ body {
     padding: 0;
 }
 
+.place-ships-one:not([open]) {
+    display: none;
+}
+
 .place-ships-one::backdrop {
     background-color: white;
     opacity: 1;

@@ -1,9 +1,11 @@
-import { getPlayerOne } from "../logic/game-controller";
+import { getPlayerOne, gameStart } from "../logic/game-controller";
 import { playerOneShips } from "../logic/ships";
 import {
     renderPlayerOneBoard,
     renderPlayerOneDialogBoard,
+    renderPlayerTwoBoard,
 } from "./render.boards";
+import { assignComputerShips } from "./ships-assignment";
 
 const playerOneDialog = document.querySelector(".place-ships-one");
 const playerOneBoard = document.querySelector(".player-one-dialog-board");
@@ -83,10 +85,23 @@ function rotateShips() {
     }
 }
 
+const playButton = document.querySelector(".play-button-one");
+const shipsContainer = document.querySelector(".dialog-one-ships-container");
+
+function handlePlayClick() {
+    if (shipsContainer.childElementCount === 0) {
+        assignComputerShips();
+        renderPlayerTwoBoard();
+        gameStart();
+        playerOneDialog.close();
+    }
+}
+
 export function populateDialogOne() {
     playerOneDialog.showModal();
     createPlayerOneBoard();
     rotateButton.addEventListener("click", rotateShips);
+    playButton.addEventListener("click", handlePlayClick);
 }
 
 let draggedShip = null;

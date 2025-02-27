@@ -39,3 +39,12 @@ export function assignShipsTest() {
     playerTwo.getBoard().assignShip(playerTwoShips.submarine, 1, 5, "y");
     playerTwo.getBoard().assignShip(playerTwoShips.patrolBoat, 5, 8, "x");
 }
+
+export function assignComputerShips() {
+    const playerTwo = gameController.getPlayerTwo();
+    playerTwo.getBoard().assignShip(playerTwoShips.carrier, 0, 0, "x");
+    playerTwo.getBoard().assignShip(playerTwoShips.battleship, 9, 3, "y");
+    playerTwo.getBoard().assignShip(playerTwoShips.destroyer, 6, 3, "y");
+    playerTwo.getBoard().assignShip(playerTwoShips.submarine, 1, 5, "y");
+    playerTwo.getBoard().assignShip(playerTwoShips.patrolBoat, 5, 8, "x");
+}

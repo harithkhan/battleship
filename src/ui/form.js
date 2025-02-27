@@ -4,7 +4,7 @@ import { displayPlayerTurn } from "./information-display";
 // import { assignShipsSinglePlayer } from "./ships-assignment";
 import { renderPlayerOneBoard, renderPlayerTwoBoard } from "./render.boards";
 import { refreshWhoCanAttack } from "./attack";
-import { populateDialogOne } from "./populate-dialog";
+import { populateDialogOne } from "./populate-dialog-one";
 
 const twoPlayerButton = document.getElementById("two-player");
 const playerOneInput = document.getElementById("input-player-1");

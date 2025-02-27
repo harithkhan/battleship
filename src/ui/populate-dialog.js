@@ -29,6 +29,7 @@ function createPlayerOneBoard() {
         });
         gridBox.addEventListener("drop", (event) => {
             event.preventDefault();
+            // eslint-disable-next-line no-use-before-define
             handleShipDrop(event);
         });
     }
@@ -89,7 +90,6 @@ let draggedShip = null;
 
 function setDraggedShip(event) {
     draggedShip = event.target.className;
-    console.log(draggedShip);
 }
 
 carrier.addEventListener("dragstart", setDraggedShip);
@@ -106,10 +106,12 @@ function handleShipDrop(event) {
         parseInt(dropCoordinatesArrStr[0], 10),
         parseInt(dropCoordinatesArrStr[1], 10),
     ];
+    const dropCoordinatesState = event.target.dataset.spaceState;
     if (
         draggedShip === "carrier" &&
         rotationState === "default" &&
-        dropCoordinatesArr[0] + 4 < 10
+        dropCoordinatesArr[0] + 4 < 10 &&
+        dropCoordinatesState === "water"
     ) {
         getPlayerOne()
             .getBoard()
@@ -120,13 +122,12 @@ function handleShipDrop(event) {
                 "x"
             );
         carrier.remove();
-        console.log(getPlayerOne().getBoard().getBoard());
-        console.log("assignment occured");
     }
     if (
         draggedShip === "carrier" &&
         rotationState === "rotated" &&
-        dropCoordinatesArr[1] + 4 < 10
+        dropCoordinatesArr[1] + 4 < 10 &&
+        dropCoordinatesState === "water"
     ) {
         getPlayerOne()
             .getBoard()
@@ -137,8 +138,134 @@ function handleShipDrop(event) {
                 "y"
             );
         carrier.remove();
-        console.log(getPlayerOne().getBoard().getBoard());
-        console.log("assignment occured");
+    }
+    if (
+        draggedShip === "battleship" &&
+        rotationState === "default" &&
+        dropCoordinatesArr[0] + 3 < 10 &&
+        dropCoordinatesState === "water"
+    ) {
+        getPlayerOne()
+            .getBoard()
+            .assignShip(
+                playerOneShips.battleship,
+                dropCoordinatesArr[0],
+                dropCoordinatesArr[1],
+                "x"
+            );
+        battleship.remove();
+    }
+    if (
+        draggedShip === "battleship" &&
+        rotationState === "rotated" &&
+        dropCoordinatesArr[1] + 3 < 10 &&
+        dropCoordinatesState === "water"
+    ) {
+        getPlayerOne()
+            .getBoard()
+            .assignShip(
+                playerOneShips.battleship,
+                dropCoordinatesArr[0],
+                dropCoordinatesArr[1],
+                "y"
+            );
+        battleship.remove();
+    }
+    if (
+        draggedShip === "destroyer" &&
+        rotationState === "default" &&
+        dropCoordinatesArr[0] + 2 < 10 &&
+        dropCoordinatesState === "water"
+    ) {
+        getPlayerOne()
+            .getBoard()
+            .assignShip(
+                playerOneShips.destroyer,
+                dropCoordinatesArr[0],
+                dropCoordinatesArr[1],
+                "x"
+            );
+        destroyer.remove();
+    }
+    if (
+        draggedShip === "destroyer" &&
+        rotationState === "rotated" &&
+        dropCoordinatesArr[1] + 2 < 10 &&
+        dropCoordinatesState === "water"
+    ) {
+        getPlayerOne()
+            .getBoard()
+            .assignShip(
+                playerOneShips.destroyer,
+                dropCoordinatesArr[0],
+                dropCoordinatesArr[1],
+                "y"
+            );
+        destroyer.remove();
+    }
+    if (
+        draggedShip === "submarine" &&
+        rotationState === "default" &&
+        dropCoordinatesArr[0] + 2 < 10 &&
+        dropCoordinatesState === "water"
+    ) {
+        getPlayerOne()
+            .getBoard()
+            .assignShip(
+                playerOneShips.submarine,
+                dropCoordinatesArr[0],
+                dropCoordinatesArr[1],
+                "x"
+            );
+        submarine.remove();
+    }
+    if (
+        draggedShip === "submarine" &&
+        rotationState === "rotated" &&
+        dropCoordinatesArr[1] + 2 < 10 &&
+        dropCoordinatesState === "water"
+    ) {
+        getPlayerOne()
+            .getBoard()
+            .assignShip(
+                playerOneShips.submarine,
+                dropCoordinatesArr[0],
+                dropCoordinatesArr[1],
+                "y"
+            );
+        submarine.remove();
+    }
+    if (
+        draggedShip === "patrol-boat" &&
+        rotationState === "default" &&
+        dropCoordinatesArr[0] + 2 < 10 &&
+        dropCoordinatesState === "water"
+    ) {
+        getPlayerOne()
+            .getBoard()
+            .assignShip(
+                playerOneShips.patrolBoat,
+                dropCoordinatesArr[0],
+                dropCoordinatesArr[1],
+                "x"
+            );
+        patrolBoat.remove();
+    }
+    if (
+        draggedShip === "patrol-boat" &&
+        rotationState === "rotated" &&
+        dropCoordinatesArr[1] + 2 < 10 &&
+        dropCoordinatesState === "water"
+    ) {
+        getPlayerOne()
+            .getBoard()
+            .assignShip(
+                playerOneShips.patrolBoat,
+                dropCoordinatesArr[0],
+                dropCoordinatesArr[1],
+                "y"
+            );
+        patrolBoat.remove();
     }
     renderPlayerOneBoard();
     renderPlayerOneDialogBoard();

@@ -4,9 +4,11 @@ import { displayPlayerTurn } from "./information-display";
 import { assignShipsTest } from "./populate-ships-test";
 import { renderPlayerOneBoard, renderPlayerTwoBoard } from "./render.boards";
 import { refreshWhoCanAttack } from "./attack";
+import { populateDialogOne } from "./populate-dialog";
 
 const twoPlayerButton = document.getElementById("two-player");
 const playerOneInput = document.getElementById("input-player-1");
+
 function handleTwoPlayerClick() {
     const previousInput = document.getElementById("input-player-2");
     if (!previousInput) {
@@ -20,6 +22,7 @@ function handleTwoPlayerClick() {
 }
 
 const singlePlayerButton = document.getElementById("single-player");
+
 function handleSinglePlayerClick() {
     const playerTwoInput = document.getElementById("input-player-2");
     if (playerTwoInput) {
@@ -30,6 +33,7 @@ function handleSinglePlayerClick() {
 const gameForm = document.querySelector(".game-form");
 const dialog = document.querySelector(".start-game-dialog");
 const startButton = document.getElementById("start-button");
+
 function handleStartClick(event) {
     event.preventDefault();
     const formData = new FormData(gameForm);
@@ -46,6 +50,7 @@ function handleStartClick(event) {
         renderPlayerTwoBoard();
         gameController.gameStart();
         dialog.close();
+        populateDialogOne();
     }
     if (gameController.getGameMode() === "two-player") {
         const playerOneName = formData.get("input-player-1") || "Player 1";

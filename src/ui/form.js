@@ -3,6 +3,7 @@ import { players } from "../logic/players";
 import { displayPlayerTurn } from "./information-display";
 import { assignShipsTest } from "./populate-ships-test";
 import { renderPlayerOneBoard, renderPlayerTwoBoard } from "./render.boards";
+import { refreshWhoCanAttack } from "./attack";
 
 const twoPlayerButton = document.getElementById("two-player");
 const playerOneInput = document.getElementById("input-player-1");
@@ -60,6 +61,7 @@ function handleStartClick(event) {
         dialog.close();
     }
     displayPlayerTurn();
+    refreshWhoCanAttack();
 }
 
 export function attachFormEventListeners() {

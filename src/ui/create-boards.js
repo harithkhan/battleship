@@ -12,7 +12,6 @@ export function createPlayerOneBoard() {
         gridBox.dataset.hitStatus = "not hit";
         gridBox.dataset.player = "player-one";
         playerOneBoard.appendChild(gridBox);
-        // gridBox.addEventListener("click", handleAttack);
         initialCoordinates = [initialCoordinates[0] + 1, initialCoordinates[1]];
         if (initialCoordinates[0] > 9) {
             initialCoordinates = [0, initialCoordinates[1] - 1];
@@ -31,7 +30,6 @@ export function createPlayerTwoBoard() {
         gridBox.dataset.hitStatus = "not hit";
         gridBox.dataset.player = "player-two";
         playerTwoBoard.appendChild(gridBox);
-        // gridBox.addEventListener("click", handleAttack);
         initialCoordinates = [initialCoordinates[0] + 1, initialCoordinates[1]];
         if (initialCoordinates[0] > 9) {
             initialCoordinates = [0, initialCoordinates[1] - 1];

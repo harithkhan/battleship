@@ -40,6 +40,32 @@ export function assignShipsTest() {
     playerTwo.getBoard().assignShip(playerTwoShips.patrolBoat, 5, 8, "x");
 }
 
+function randomCoordinates() {
+    let xCoordinate = Math.floor(Math.random() * 10);
+    let yCoordinate = Math.floor(Math.random() * 10);
+    const computerBoard = gameController.getPlayerTwo().getBoard().getBoard();
+    computerBoard.forEach((x) => {
+        x.forEach((y) => {
+            if (
+                computerBoard.indexOf(x) === xCoordinate ||
+                x.indexOf(y) === yCoordinate
+            ) {
+                xCoordinate = Math.floor(Math.random() * 10);
+                yCoordinate = Math.floor(Math.random() * 10);
+            }
+        });
+    });
+    return [xCoordinate, yCoordinate];
+}
+
+function randomOrientation() {
+    const flip = Math.random();
+    if (flip > 0.5) {
+        return "x";
+    }
+    return "y";
+}
+
 export function assignComputerShips() {
     const playerTwo = gameController.getPlayerTwo();
     playerTwo.getBoard().assignShip(playerTwoShips.carrier, 0, 0, "x");

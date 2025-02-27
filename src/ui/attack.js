@@ -1,3 +1,4 @@
+import { displayPlayerTurn } from "./information-display";
 import {
     getPlayerOne,
     getPlayerTwo,
@@ -37,6 +38,7 @@ function attack(player, coordinates) {
     }
     // eslint-disable-next-line no-use-before-define
     refreshWhoCanAttack();
+    displayPlayerTurn();
 }
 
 export function handleAttack(event) {

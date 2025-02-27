@@ -1,9 +1,14 @@
-import { displayPlayerTurn } from "./information-display";
+/* eslint-disable no-use-before-define */
+import { displayPlayerTurn, displayGameOver } from "./information-display";
 import {
     getPlayerOne,
     getPlayerTwo,
     getPlayerTurn,
     getGameMode,
+    getGameOver,
+    resetGameState,
+    setGameWinner,
+    getOtherPlayer,
 } from "../logic/game-controller";
 
 function attack(player, coordinates) {
@@ -37,9 +42,15 @@ function attack(player, coordinates) {
         ][coordinatesArr[1]][0];
         attackedBox.dataset.hitStatus = hitStatus;
     }
-    // eslint-disable-next-line no-use-before-define
     refreshWhoCanAttack();
     displayPlayerTurn();
+    // Check if game over
+    if (getPlayerTurn().getBoard().isGameOver()) {
+        setGameWinner(getOtherPlayer());
+        refreshWhoCanAttack();
+        displayGameOver();
+        resetGameState();
+    }
 }
 
 export function handleAttack(event) {
@@ -50,7 +61,6 @@ export function handleAttack(event) {
         getGameMode() === "single-player" &&
         getPlayerTurn() === getPlayerTwo()
     ) {
-        // eslint-disable-next-line no-use-before-define
         setTimeout(playComputerAttack, 1000);
     }
 }
@@ -107,6 +117,15 @@ export function refreshWhoCanAttack() {
             gridBox.removeEventListener("click", handleAttack);
         });
     }
+
+    if (getGameOver()) {
+        playerOneGridBoxes.forEach((gridBox) => {
+            gridBox.removeEventListener("click", handleAttack);
+        });
+        playerTwoGridBoxes.forEach((gridBox) => {
+            gridBox.removeEventListener("click", handleAttack);
+        });
+    }
 }
 
 function generateRandomCoordinates() {
@@ -119,9 +138,13 @@ export function playComputerAttack() {
     const playerOneBoard = getPlayerOne().getBoard();
     const attackList = playerOneBoard.getAttackList();
     let draftCoordinates = generateRandomCoordinates();
-    while (attackList.includes(draftCoordinates)) {
-        draftCoordinates = generateRandomCoordinates();
-    }
-    console.log(draftCoordinates);
+    attackList.forEach((coordinate) => {
+        if (
+            coordinate[0] === draftCoordinates[0] &&
+            coordinate[1] === draftCoordinates[1]
+        ) {
+            draftCoordinates = generateRandomCoordinates();
+        }
+    });
     attack("player-one", draftCoordinates.join(","));
 }

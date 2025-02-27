@@ -67,12 +67,17 @@ export const gameboard = () => {
         return status;
     };
 
+    const receiveAttackList = [];
+
+    const getAttackList = () => receiveAttackList;
+
     const receiveAttack = (xCoordinate, yCoordinate) => {
         if (
             board[xCoordinate][yCoordinate][0] === "not hit" &&
             board[xCoordinate][yCoordinate][1] === "water"
         ) {
             board[xCoordinate][yCoordinate][0] = "miss";
+            receiveAttackList.push([xCoordinate, yCoordinate]);
             switchTurn();
             return "Miss! No ships were hit";
         }
@@ -82,6 +87,7 @@ export const gameboard = () => {
         ) {
             board[xCoordinate][yCoordinate][0] = "hit";
             ships[board[xCoordinate][yCoordinate][1]].hit();
+            receiveAttackList.push([xCoordinate, yCoordinate]);
             switchTurn();
             if (isGameOver()) {
                 return "Game Over!";
@@ -96,6 +102,7 @@ export const gameboard = () => {
         getShips,
         assignShip,
         receiveAttack,
+        getAttackList,
         isGameOver,
     };
 };

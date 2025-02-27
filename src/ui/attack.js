@@ -3,6 +3,7 @@ import {
     getPlayerOne,
     getPlayerTwo,
     getPlayerTurn,
+    getGameMode,
 } from "../logic/game-controller";
 
 function attack(player, coordinates) {
@@ -45,6 +46,13 @@ export function handleAttack(event) {
     const { coordinates, player } = event.currentTarget.dataset;
     attack(player, coordinates);
     event.currentTarget.removeEventListener("click", handleAttack);
+    if (
+        getGameMode() === "single-player" &&
+        getPlayerTurn() === getPlayerTwo()
+    ) {
+        // eslint-disable-next-line no-use-before-define
+        setTimeout(playComputerAttack, 1000);
+    }
 }
 
 export function refreshWhoCanAttack() {
@@ -99,4 +107,21 @@ export function refreshWhoCanAttack() {
             gridBox.removeEventListener("click", handleAttack);
         });
     }
+}
+
+function generateRandomCoordinates() {
+    const xCoordinate = Math.floor(Math.random() * 10);
+    const yCoordinate = Math.floor(Math.random() * 10);
+    return [xCoordinate, yCoordinate];
+}
+
+export function playComputerAttack() {
+    const playerOneBoard = getPlayerOne().getBoard();
+    const attackList = playerOneBoard.getAttackList();
+    let draftCoordinates = generateRandomCoordinates();
+    while (attackList.includes(draftCoordinates)) {
+        draftCoordinates = generateRandomCoordinates();
+    }
+    console.log(draftCoordinates);
+    attack("player-one", draftCoordinates.join(","));
 }

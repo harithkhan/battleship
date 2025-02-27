@@ -1,5 +1,6 @@
 const playerOneDialog = document.querySelector(".place-ships-one");
 const playerOneBoard = document.querySelector(".player-one-dialog-board");
+const rotateButton = document.querySelector(".rotate-button");
 
 function createPlayerOneBoard() {
     let initialCoordinates = [0, 9];
@@ -19,7 +20,53 @@ function createPlayerOneBoard() {
     }
 }
 
+let rotationState = "default";
+const carrier = document.querySelector(".carrier");
+const battleship = document.querySelector(".battleship");
+const destroyer = document.querySelector(".destroyer");
+const submarine = document.querySelector(".submarine");
+const patrolBoat = document.querySelector(".patrol-boat");
+
+function rotateShips() {
+    if (rotationState === "default") {
+        carrier.style.width = "3rem";
+        carrier.style.height = "15rem";
+        carrier.gridArea = "2 / 2 / 7 / 3";
+        battleship.style.width = "3rem";
+        battleship.style.height = "12rem";
+        battleship.style.gridArea = "2 / 4 / 6 / 5";
+        destroyer.style.width = "3rem";
+        destroyer.style.height = "9rem";
+        destroyer.style.gridArea = "2 / 6 / 5 / 7";
+        submarine.style.width = "3rem";
+        submarine.style.height = "9rem";
+        submarine.style.gridArea = "7 / 4 / 10 / 5";
+        patrolBoat.style.width = "3rem";
+        patrolBoat.style.height = "6rem";
+        patrolBoat.style.gridArea = "6 / 6 / 8 / 7";
+        rotationState = "rotated";
+    } else if (rotationState === "rotated") {
+        carrier.style.width = "15rem";
+        carrier.style.height = "3rem";
+        carrier.gridArea = "2 / 2 / 3 / 7";
+        battleship.style.width = "12rem";
+        battleship.style.height = "3rem";
+        battleship.style.gridArea = "4 / 2 / 5 / 6";
+        destroyer.style.width = "9rem";
+        destroyer.style.height = "3rem";
+        destroyer.style.gridArea = "6 / 2 / 7 / 5";
+        submarine.style.width = "9rem";
+        submarine.style.height = "3rem";
+        submarine.style.gridArea = "8 / 2 / 9 / 5";
+        patrolBoat.style.width = "6rem";
+        patrolBoat.style.height = "3rem";
+        patrolBoat.style.gridArea = "9 / 5 / 10 / 7";
+        rotationState = "default";
+    }
+}
+
 export function populateDialogOne() {
     playerOneDialog.showModal();
     createPlayerOneBoard();
+    rotateButton.addEventListener("click", rotateShips);
 }

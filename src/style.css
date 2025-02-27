@@ -142,11 +142,11 @@ body {
 }
 
 .patrol-boat {
-  width: 3rem;
-  height: 6rem;
+  width: 6rem;
+  height: 3rem;
   border: 1px solid black;
   background-color: green;
-  grid-area: 6 / 6 / 8 / 7;
+  grid-area: 9 / 5 / 10 / 7;
 }
 
 /* Main Game Display */

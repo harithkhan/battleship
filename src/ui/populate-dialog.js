@@ -1,3 +1,7 @@
+import { getPlayerOne } from "../logic/game-controller";
+import { playerOneShips } from "../logic/ships";
+import { renderPlayerOneBoard } from "./render.boards";
+
 const playerOneDialog = document.querySelector(".place-ships-one");
 const playerOneBoard = document.querySelector(".player-one-dialog-board");
 const rotateButton = document.querySelector(".rotate-button");
@@ -17,6 +21,13 @@ function createPlayerOneBoard() {
         if (initialCoordinates[0] > 9) {
             initialCoordinates = [0, initialCoordinates[1] - 1];
         }
+        gridBox.addEventListener("dragover", (event) => {
+            event.preventDefault(); // To allow dropping
+        });
+        gridBox.addEventListener("drop", (event) => {
+            event.preventDefault();
+            handleShipDrop(event);
+        });
     }
 }
 
@@ -69,4 +80,62 @@ export function populateDialogOne() {
     playerOneDialog.showModal();
     createPlayerOneBoard();
     rotateButton.addEventListener("click", rotateShips);
+}
+
+let draggedShip = null;
+
+function setDraggedShip(event) {
+    draggedShip = event.target.className;
+    console.log(draggedShip);
+}
+
+carrier.addEventListener("dragstart", setDraggedShip);
+battleship.addEventListener("dragstart", setDraggedShip);
+destroyer.addEventListener("dragstart", setDraggedShip);
+submarine.addEventListener("dragstart", setDraggedShip);
+patrolBoat.addEventListener("dragstart", setDraggedShip);
+
+function handleShipDrop(event) {
+    event.preventDefault();
+    const dropCoordinatesStr = event.target.dataset.coordinates;
+    const dropCoordinatesArrStr = dropCoordinatesStr.split(",");
+    const dropCoordinatesArr = [
+        parseInt(dropCoordinatesArrStr[0], 10),
+        parseInt(dropCoordinatesArrStr[1], 10),
+    ];
+    if (
+        draggedShip === "carrier" &&
+        rotationState === "default" &&
+        dropCoordinatesArr[0] + 4 < 10
+    ) {
+        getPlayerOne()
+            .getBoard()
+            .assignShip(
+                playerOneShips.carrier,
+                dropCoordinatesArr[0],
+                dropCoordinatesArr[1],
+                "x"
+            );
+        carrier.remove();
+        console.log(getPlayerOne().getBoard().getBoard());
+        console.log("assignment occured");
+    }
+    if (
+        draggedShip === "carrier" &&
+        rotationState === "rotated" &&
+        dropCoordinatesArr[1] + 4 < 10
+    ) {
+        getPlayerOne()
+            .getBoard()
+            .assignShip(
+                playerOneShips.carrier,
+                dropCoordinatesArr[0],
+                dropCoordinatesArr[1],
+                "y"
+            );
+        carrier.remove();
+        console.log(getPlayerOne().getBoard().getBoard());
+        console.log("assignment occured");
+    }
+    renderPlayerOneBoard();
 }

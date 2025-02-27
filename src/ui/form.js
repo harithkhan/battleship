@@ -1,7 +1,7 @@
 import * as gameController from "../logic/game-controller";
 import { players } from "../logic/players";
 import { displayPlayerTurn } from "./information-display";
-import { assignShipsTest } from "./populate-ships-test";
+// import { assignShipsSinglePlayer } from "./ships-assignment";
 import { renderPlayerOneBoard, renderPlayerTwoBoard } from "./render.boards";
 import { refreshWhoCanAttack } from "./attack";
 import { populateDialogOne } from "./populate-dialog";
@@ -45,7 +45,7 @@ function handleStartClick(event) {
         const playerTwo = players("computer", "Computer");
         gameController.assignPlayerOne(playerOne);
         gameController.assignPlayerTwo(playerTwo);
-        assignShipsTest();
+        // assignShipsSinglePlayer();
         renderPlayerOneBoard();
         renderPlayerTwoBoard();
         gameController.gameStart();
@@ -59,7 +59,7 @@ function handleStartClick(event) {
         const playerTwo = players("human", playerTwoName);
         gameController.assignPlayerOne(playerOne);
         gameController.assignPlayerTwo(playerTwo);
-        assignShipsTest();
+        // assignShipsSinglePlayer();
         renderPlayerOneBoard();
         renderPlayerTwoBoard();
         gameController.gameStart();

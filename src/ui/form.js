@@ -1,8 +1,6 @@
 import * as gameController from "../logic/game-controller";
 import { players } from "../logic/players";
-import { displayPlayerTurn } from "./information-display";
 import { renderPlayerOneBoard, renderPlayerTwoBoard } from "./render.boards";
-import { refreshWhoCanAttack } from "./attack";
 import { populateDialogOne } from "./populate-dialog-one";
 
 const twoPlayerButton = document.getElementById("two-player");
@@ -61,8 +59,6 @@ function handleStartClick(event) {
         gameController.gameStart();
         dialog.close();
     }
-    displayPlayerTurn();
-    refreshWhoCanAttack();
 }
 
 export function attachFormEventListeners() {

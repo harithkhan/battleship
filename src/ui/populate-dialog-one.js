@@ -1,5 +1,7 @@
 import { getPlayerOne, gameStart } from "../logic/game-controller";
 import { playerOneShips } from "../logic/ships";
+import { refreshWhoCanAttack } from "./attack";
+import { displayPlayerTurn } from "./information-display";
 import {
     renderPlayerOneBoard,
     renderPlayerOneDialogBoard,
@@ -93,6 +95,8 @@ function handlePlayClick() {
         assignComputerShips();
         renderPlayerTwoBoard();
         gameStart();
+        displayPlayerTurn();
+        refreshWhoCanAttack();
         playerOneDialog.close();
     }
 }

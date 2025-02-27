@@ -1,6 +1,9 @@
 import { getPlayerOne } from "../logic/game-controller";
 import { playerOneShips } from "../logic/ships";
-import { renderPlayerOneBoard } from "./render.boards";
+import {
+    renderPlayerOneBoard,
+    renderPlayerOneDialogBoard,
+} from "./render.boards";
 
 const playerOneDialog = document.querySelector(".place-ships-one");
 const playerOneBoard = document.querySelector(".player-one-dialog-board");
@@ -138,4 +141,5 @@ function handleShipDrop(event) {
         console.log("assignment occured");
     }
     renderPlayerOneBoard();
+    renderPlayerOneDialogBoard();
 }

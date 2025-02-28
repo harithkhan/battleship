@@ -137,14 +137,15 @@ function generateRandomCoordinates() {
 export function playComputerAttack() {
     const playerOneBoard = getPlayerOne().getBoard();
     const attackList = playerOneBoard.getAttackList();
-    let draftCoordinates = generateRandomCoordinates();
-    attackList.forEach((coordinate) => {
-        if (
-            coordinate[0] === draftCoordinates[0] &&
-            coordinate[1] === draftCoordinates[1]
-        ) {
-            draftCoordinates = generateRandomCoordinates();
-        }
+    const attackListStr = [];
+    attackList.forEach((coordinates) => {
+        attackListStr.push(coordinates.join(","));
     });
-    attack("player-one", draftCoordinates.join(","));
+    let draftCoordinates = generateRandomCoordinates().join(",");
+    while (attackListStr.includes(draftCoordinates)) {
+        console.log("reassignment occured");
+        draftCoordinates = generateRandomCoordinates().join(",");
+    }
+    attack("player-one", draftCoordinates);
+    console.log(attackListStr);
 }

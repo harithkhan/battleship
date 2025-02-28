@@ -33,6 +33,7 @@ export const gameboard = () => {
                     board[target[0]][target[1]][1] = ship.getName();
                 });
                 ships[ship.getName()] = ship;
+                console.log(`${ship.getName()} assigned to coordinates ${targetCoordinates}`)
                 return `${ship.getName()} assigned to coordinates ${targetCoordinates}`;
             }
         }
@@ -52,9 +53,11 @@ export const gameboard = () => {
                     board[target[0]][target[1]][1] = ship.getName();
                 });
                 ships[ship.getName()] = ship;
+                console.log(`${ship.getName()} assigned to coordinates ${targetCoordinates}`)
                 return `${ship.getName()} assigned to coordinates ${targetCoordinates}`;
             }
         }
+        console.log(`tried to assign at ${xCoordinate}, ${yCoordinate} with ${orientation}`);
         return "A ship has already been assigned to that space";
     };
 

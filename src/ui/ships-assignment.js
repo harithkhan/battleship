@@ -38,36 +38,96 @@ export function assignShipsTest() {
     playerTwo.getBoard().assignShip(playerTwoShips.patrolBoat, 5, 8, "x");
 }
 
-function randomComputerCoordinates(ship) {
+function checkAdjacentCoordinates(orientation, ship, player, x, y) {
+    if (orientation === "x") {
+        for (let i = 0; i < ship.getLength(); i++) {
+            const checkCoordinate = x + i;
+            // console.log(player.getBoard().getContentsFromCoordinates(checkCoordinate, y))
+            if (
+                checkCoordinate > 9 ||
+                player
+                    .getBoard()
+                    .getContentsFromCoordinates(checkCoordinate, y)[1] !==
+                    "water"
+            ) {
+                return false;
+            }
+        }
+    }
+    if (orientation === "y") {
+        for (let i = 0; i < ship.getLength(); i++) {
+            const checkCoordinate = y + i;
+            // console.log(player.getBoard().getContentsFromCoordinates(checkCoordinate, y))
+            if (
+                checkCoordinate > 9 ||
+                player
+                    .getBoard()
+                    .getContentsFromCoordinates(x, checkCoordinate)[1] !==
+                    "water"
+            ) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+function randomComputerCoordinates(ship, orientation) {
     let xCoordinate = Math.floor(Math.random() * 10);
     let yCoordinate = Math.floor(Math.random() * 10);
     const computerBoard = gameController.getPlayerTwo().getBoard().getBoard();
-    const xList = [];
-    const yList = [];
-    // computerBoard.forEach((x) => {
-    //     computerBoard.forEach((y) => {
-    //         if (y[1] !== "water") {
-    //             xList.push(computerBoard.indexOf(x));
-    //             yList.push(x.indexOf(y));
-    //         }
-    //     });
-    // });
-    computerBoard.forEach((x) => {
-        xList.push(x);
-    });
-    computerBoard.forEach((x) => {
-        x.forEach((y) => {
-            yList.push(y);
+
+    if (orientation === "x") {
+        const xList = [];
+        const yList = [];
+        computerBoard.forEach((x) => {
+            x.forEach((y) => {
+                if (y[1] !== "water") {
+                    xList.push(computerBoard.indexOf(x));
+                    yList.push(x.indexOf(y));
+                }
+            });
         });
-    });
-    while (
-        xList.includes(xCoordinate) ||
-        yList.includes(yCoordinate) ||
-        ship.getLength() + xCoordinate > 9 ||
-        ship.getLength() + yCoordinate > 9
-    ) {
-        xCoordinate = Math.floor(Math.random() * 10);
-        yCoordinate = Math.floor(Math.random() * 10);
+        while (
+            xList.includes(xCoordinate) ||
+            yList.includes(yCoordinate) ||
+            !checkAdjacentCoordinates(
+                orientation,
+                ship,
+                gameController.getPlayerTwo(),
+                xCoordinate,
+                yCoordinate
+            )
+        ) {
+            xCoordinate = Math.floor(Math.random() * 10);
+            yCoordinate = Math.floor(Math.random() * 10);
+        }
+    }
+    if (orientation === "y") {
+        const xList = [];
+        const yList = [];
+        computerBoard.forEach((x) => {
+            x.forEach((y) => {
+                if (y[1] !== "water") {
+                    xList.push(computerBoard.indexOf(x));
+                    yList.push(x.indexOf(y));
+                }
+            });
+        });
+        while (
+            xList.includes(xCoordinate) ||
+            yList.includes(yCoordinate) ||
+            !checkAdjacentCoordinates(
+                orientation,
+                ship,
+                gameController.getPlayerTwo(),
+                xCoordinate,
+                yCoordinate
+            )
+        ) {
+            xCoordinate = Math.floor(Math.random() * 10);
+            yCoordinate = Math.floor(Math.random() * 10);
+        }
     }
     return [xCoordinate, yCoordinate];
 }
@@ -82,18 +142,24 @@ function randomOrientation() {
 
 export function assignComputerShips() {
     const playerTwo = gameController.getPlayerTwo();
-    const carrierCoordinates = randomComputerCoordinates(playerTwoShips.carrier);
-    const battleshipCoordinates = randomComputerCoordinates(playerTwoShips.battleship);
-    const destroyerCoordinates = randomComputerCoordinates(playerTwoShips.destroyer);
-    const submarineCoordinates = randomComputerCoordinates(playerTwoShips.submarine);
-    const patrolBoatCoordinates = randomComputerCoordinates(playerTwoShips.patrolBoat);
+    const carrierOrientation = randomOrientation();
+    const battleshipOrientation = randomOrientation();
+    const destroyerOrientation = randomOrientation();
+    const submarineOrientation = randomOrientation();
+    const patrolBoatOrientation = randomOrientation();
+    const carrierCoordinates = randomComputerCoordinates(playerTwoShips.carrier, carrierOrientation);
+    const battleshipCoordinates = randomComputerCoordinates(playerTwoShips.battleship,battleshipOrientation);
+    const destroyerCoordinates = randomComputerCoordinates(playerTwoShips.destroyer, destroyerOrientation);
+    const submarineCoordinates = randomComputerCoordinates(playerTwoShips.submarine, submarineOrientation);
+    const patrolBoatCoordinates = randomComputerCoordinates(playerTwoShips.patrolBoat, patrolBoatOrientation);
+
     playerTwo
         .getBoard()
         .assignShip(
             playerTwoShips.carrier,
             carrierCoordinates[0],
             carrierCoordinates[1],
-            randomOrientation()
+            carrierOrientation
         );
     playerTwo
         .getBoard()
@@ -101,7 +167,7 @@ export function assignComputerShips() {
             playerTwoShips.battleship,
             battleshipCoordinates[0],
             battleshipCoordinates[1],
-            randomOrientation()
+            battleshipOrientation
         );
     playerTwo
         .getBoard()
@@ -109,7 +175,7 @@ export function assignComputerShips() {
             playerTwoShips.destroyer,
             destroyerCoordinates[0],
             destroyerCoordinates[1],
-            randomOrientation()
+            destroyerOrientation
         );
     playerTwo
         .getBoard()
@@ -117,7 +183,7 @@ export function assignComputerShips() {
             playerTwoShips.submarine,
             submarineCoordinates[0],
             submarineCoordinates[1],
-            randomOrientation()
+            submarineOrientation
         );
     playerTwo
         .getBoard()
@@ -125,6 +191,6 @@ export function assignComputerShips() {
             playerTwoShips.patrolBoat,
             patrolBoatCoordinates[0],
             patrolBoatCoordinates[1],
-            randomOrientation()
+            patrolBoatOrientation
         );
 }

@@ -260,7 +260,7 @@ function handleShipDrop(event) {
     if (
         draggedShip === "patrol-boat" &&
         rotationState === "default" &&
-        dropCoordinatesArr[0] + 2 < 10 &&
+        dropCoordinatesArr[0] + 1 < 10 &&
         dropCoordinatesState === "water"
     ) {
         getPlayerOne()
@@ -276,7 +276,7 @@ function handleShipDrop(event) {
     if (
         draggedShip === "patrol-boat" &&
         rotationState === "rotated" &&
-        dropCoordinatesArr[1] + 2 < 10 &&
+        dropCoordinatesArr[1] + 1 < 10 &&
         dropCoordinatesState === "water"
     ) {
         getPlayerOne()

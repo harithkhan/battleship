@@ -23,6 +23,17 @@ test("Ship placing with x orientation", () => {
     expect(playerOne.getBoard()[8][6][1]).toBe("water");
 });
 
+test("Get board contents from coordinates", () => {
+    expect(playerOne.getContentsFromCoordinates(0, 0)).toEqual([
+        "not hit",
+        "carrier",
+    ]);
+    expect(playerOne.getContentsFromCoordinates(4, 3)).toEqual([
+        "not hit",
+        "water",
+    ]);
+});
+
 test("Ship placing with y orientation", () => {
     playerTwo.assignShip(carrier, 0, 0, "y");
     expect(playerTwo.getBoard()[0][0][1]).toBe(carrier.getName());

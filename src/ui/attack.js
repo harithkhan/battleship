@@ -143,9 +143,7 @@ export function playComputerAttack() {
     });
     let draftCoordinates = generateRandomCoordinates().join(",");
     while (attackListStr.includes(draftCoordinates)) {
-        console.log("reassignment occured");
         draftCoordinates = generateRandomCoordinates().join(",");
     }
     attack("player-one", draftCoordinates);
-    console.log(attackListStr);
 }

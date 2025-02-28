@@ -10,6 +10,8 @@ export const gameboard = () => {
 
     const getBoard = () => board;
 
+    const getContentsFromCoordinates = (x, y) => board[x][y];
+
     const ships = {};
 
     const getShips = () => ships;
@@ -99,6 +101,7 @@ export const gameboard = () => {
 
     return {
         getBoard,
+        getContentsFromCoordinates,
         getShips,
         assignShip,
         receiveAttack,

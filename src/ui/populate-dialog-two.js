@@ -147,7 +147,6 @@ function rotateShips() {
     }
 }
 
-const playButton = document.querySelector(".play-button-two");
 const randomButton = document.querySelector(".random-button-two");
 const shipsContainer = document.querySelector(".dialog-two-ships-container");
 const placeButton = document.querySelector(".place-button-two");
@@ -223,6 +222,16 @@ function handlePlaceClick() {
 
         placementTurn = "player-two";
         placeButton.remove();
+
+        const playButton = document.createElement("button");
+        playButton.type = "button";
+        playButton.textContent = "Play!";
+        placeButton.className = ".play-button-two";
+        playButton.addEventListener("click", handlePlayClick);
+        const buttonsContainer = document.querySelector(
+            ".dialog-two-buttons-container"
+        );
+        buttonsContainer.appendChild(playButton);
         const dialogTwoHeader = document.querySelector(".dialog-two-header");
         dialogTwoHeader.textContent = `${getPlayerTwo().getName()}, place your ships!`;
     }
@@ -233,7 +242,6 @@ export function populateDialogTwo() {
     createPlayerOneBoard();
     rotateButton.addEventListener("click", rotateShips);
     randomButton.addEventListener("click", playerOneRandom);
-    playButton.addEventListener("click", handlePlayClick);
     placeButton.addEventListener("click", handlePlaceClick);
 }
 

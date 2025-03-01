@@ -45,11 +45,20 @@ function attack(player, coordinates) {
     }
     refreshWhoCanAttack();
     displayPlayerTurn();
-    if (getGameMode() === "two-player" && player === "player-one") {
+    if (getGameMode() === "two-player") {
         insertPassDeviceButton();
-    }
-    if (getGameMode() === "two-player" && player === "player-two") {
-        insertPassDeviceButton();
+        const playerOneGridBoxes = document.querySelectorAll(
+            ".player-one-board-container > .grid-box"
+        );
+        const playerTwoGridBoxes = document.querySelectorAll(
+            ".player-two-board-container > .grid-box"
+        );
+        playerOneGridBoxes.forEach((gridBox) => {
+            gridBox.removeEventListener("click", handleAttack);
+        });
+        playerTwoGridBoxes.forEach((gridBox) => {
+            gridBox.removeEventListener("click", handleAttack);
+        });
     }
     // Check if game over
     if (getPlayerTurn().getBoard().isGameOver()) {

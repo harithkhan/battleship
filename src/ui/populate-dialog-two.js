@@ -1,4 +1,8 @@
-import { getPlayerOne, getPlayerTwo, gameStart } from "../logic/game-controller";
+import {
+    getPlayerOne,
+    getPlayerTwo,
+    gameStart,
+} from "../logic/game-controller";
 import { playerOneShips, playerTwoShips } from "../logic/ships";
 import { refreshWhoCanAttack } from "./attack";
 import { displayPlayerTurn } from "./information-display";
@@ -6,9 +10,9 @@ import {
     renderPlayerOneBoard,
     renderPlayerOneDialogBoardMultiplayer,
     renderPlayerTwoBoard,
-    renderPlayerTwoDialogBoardMultiplayer
+    renderPlayerTwoDialogBoardMultiplayer,
 } from "./render.boards";
-import { assignComputerShips, playerOneRandom, playerTwoRandom } from "./ships-assignment";
+import { playerOneRandom, playerTwoRandom } from "./ships-assignment";
 
 const dialogTwo = document.querySelector(".place-ships-two");
 const dialogTwoBoard = document.querySelector(".two-player-dialog-board");

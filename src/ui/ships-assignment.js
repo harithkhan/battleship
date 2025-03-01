@@ -4,7 +4,8 @@ import {
     renderPlayerOneDialogBoard,
     renderPlayerOneDialogBoardMultiplayer,
     renderPlayerTwoBoard,
-    renderPlayerTwoDialogBoardMultiplayer } from "./render.boards";
+    renderPlayerTwoDialogBoardMultiplayer,
+} from "./render.boards";
 
 function checkAdjacentCoordinates(orientation, ship, player, x, y) {
     if (orientation === "x") {

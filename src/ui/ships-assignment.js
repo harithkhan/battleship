@@ -257,22 +257,44 @@ export function playerOneRandom() {
         );
     renderPlayerOneDialogBoard();
     renderPlayerOneDialogBoardMultiplayer();
+    const carrierOne = document.querySelector(".carrier-one");
+    const battleshipOne = document.querySelector(".battleship-one");
+    const destroyerOne = document.querySelector(".destroyer-one");
+    const submarineOne = document.querySelector(".submarine-one");
+    const patrolBoatOne = document.querySelector(".patrol-boat-one");
     const carrierTwo = document.querySelector(".carrier-two");
     const battleshipTwo = document.querySelector(".battleship-two");
     const destroyerTwo = document.querySelector(".destroyer-two");
     const submarineTwo = document.querySelector(".submarine-two");
     const patrolBoatTwo = document.querySelector(".patrol-boat-two");
-    if (
-        carrierTwo &&
-        battleshipTwo &&
-        destroyerTwo &&
-        submarineTwo &&
-        patrolBoatTwo
-    ) {
+    if (carrierOne) {
+        carrierOne.remove();
+    }
+    if (battleshipOne) {
+        battleshipOne.remove();
+    }
+    if (destroyerOne) {
+        destroyerOne.remove();
+    }
+    if (submarineOne) {
+        submarineOne.remove();
+    }
+    if (patrolBoatOne) {
+        patrolBoatOne.remove();
+    }
+    if (carrierTwo) {
         carrierTwo.remove();
+    }
+    if (battleshipTwo) {
         battleshipTwo.remove();
+    }
+    if (destroyerTwo) {
         destroyerTwo.remove();
+    }
+    if (submarineTwo) {
         submarineTwo.remove();
+    }
+    if (patrolBoatTwo) {
         patrolBoatTwo.remove();
     }
 }
@@ -348,22 +370,25 @@ export function playerTwoRandom() {
         );
     renderPlayerTwoBoard();
     renderPlayerTwoDialogBoardMultiplayer();
+
     const carrierTwo = document.querySelector(".carrier-two");
     const battleshipTwo = document.querySelector(".battleship-two");
     const destroyerTwo = document.querySelector(".destroyer-two");
     const submarineTwo = document.querySelector(".submarine-two");
     const patrolBoatTwo = document.querySelector(".patrol-boat-two");
-    if (
-        carrierTwo &&
-        battleshipTwo &&
-        destroyerTwo &&
-        submarineTwo &&
-        patrolBoatTwo
-    ) {
+    if (carrierTwo) {
         carrierTwo.remove();
+    }
+    if (battleshipTwo) {
         battleshipTwo.remove();
+    }
+    if (destroyerTwo) {
         destroyerTwo.remove();
+    }
+    if (submarineTwo) {
         submarineTwo.remove();
+    }
+    if (patrolBoatTwo) {
         patrolBoatTwo.remove();
     }
 }

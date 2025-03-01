@@ -8,7 +8,7 @@ import { renderPlayerOneBoard, renderPlayerTwoBoard } from "./render.boards";
 
 const gameButtonsContainer = document.querySelector(".game-buttons-container");
 
-export function receiveDevice() {
+function receiveDevice() {
     if (getPlayerTurn() === getPlayerOne()) {
         renderPlayerOneBoard();
     }
@@ -30,7 +30,7 @@ export function insertReceiveDeviceButton() {
     gameButtonsContainer.appendChild(receiveDeviceButton);
 }
 
-export function passDevice() {
+function passDevice() {
     hideShips(getPlayerOne());
     hideShips(getPlayerTwo());
     const passDeviceButton = document.querySelector(".pass-device-button");

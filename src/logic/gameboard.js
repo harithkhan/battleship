@@ -1,7 +1,7 @@
 import { switchTurn } from "./game-controller";
 
 export const gameboard = () => {
-    const board = [];
+    let board = [];
     for (let i = 0; i < 10; i++) {
         // Board indexes are the x-axis. The y-axis are the arrays being
         // pushed below.
@@ -11,6 +11,13 @@ export const gameboard = () => {
     const getBoard = () => board;
 
     const getContentsFromCoordinates = (x, y) => board[x][y];
+
+    const resetBoard = () => {
+        board = [];
+        for (let i = 0; i < 10; i++) {
+            board.push(Array.from({ length: 10 }, () => ["not hit", "water"]));
+        }
+    };
 
     const ships = {};
 
@@ -102,6 +109,7 @@ export const gameboard = () => {
     return {
         getBoard,
         getContentsFromCoordinates,
+        resetBoard,
         getShips,
         assignShip,
         receiveAttack,

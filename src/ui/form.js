@@ -43,6 +43,8 @@ function handleStartClick(event) {
         const playerTwo = players("computer", "Computer");
         gameController.assignPlayerOne(playerOne);
         gameController.assignPlayerTwo(playerTwo);
+        const dialogOneHeader = document.querySelector(".dialog-one-header");
+        dialogOneHeader.textContent = `${playerOneName}, place your ships!`;
         renderPlayerOneBoard();
         renderPlayerTwoBoard();
         dialog.close();
@@ -55,6 +57,8 @@ function handleStartClick(event) {
         const playerTwo = players("human", playerTwoName);
         gameController.assignPlayerOne(playerOne);
         gameController.assignPlayerTwo(playerTwo);
+        const dialogTwoHeader = document.querySelector(".dialog-two-header");
+        dialogTwoHeader.textContent = `${playerOneName}, place your ships!`;
         renderPlayerOneBoard();
         renderPlayerTwoBoard();
         gameController.gameStart();

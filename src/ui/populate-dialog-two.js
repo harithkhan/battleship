@@ -17,9 +17,6 @@ import { playerOneRandom, playerTwoRandom } from "./ships-assignment";
 const dialogTwo = document.querySelector(".place-ships-two");
 const dialogTwoBoard = document.querySelector(".two-player-dialog-board");
 const rotateButton = document.querySelector(".rotate-button-two");
-const dialogTwoHeader = document.querySelector(".dialog-two-header");
-
-dialogTwoHeader.textContent = "Player one, place your ships!";
 
 function createPlayerOneBoard() {
     let initialCoordinates = [0, 9];
@@ -224,7 +221,8 @@ function handlePlaceClick() {
 
         placementTurn = "player-two";
         placeButton.remove();
-        dialogTwoHeader.textContent = "Player two, place your ships!";
+        const dialogTwoHeader = document.querySelector(".dialog-two-header");
+        dialogTwoHeader.textContent = `${getPlayerTwo().getName()}, place your ships!`;
     }
 }
 

@@ -12,9 +12,6 @@ import { assignComputerShips, playerOneRandom } from "./ships-assignment";
 const playerOneDialog = document.querySelector(".place-ships-one");
 const playerOneBoard = document.querySelector(".player-one-dialog-board");
 const rotateButton = document.querySelector(".rotate-button");
-const dialogOneHeader = document.querySelector(".dialog-one-header");
-
-dialogOneHeader.textContent = "Place your ships!";
 
 function createPlayerOneBoard() {
     let initialCoordinates = [0, 9];

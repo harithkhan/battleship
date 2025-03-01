@@ -133,7 +133,7 @@ function handleShipDrop(event) {
     ];
     const dropCoordinatesState = event.target.dataset.spaceState;
     if (
-        draggedShip === "carrier" &&
+        draggedShip === "carrier-one" &&
         rotationState === "default" &&
         dropCoordinatesArr[0] + 4 < 10 &&
         dropCoordinatesState === "water"
@@ -149,7 +149,7 @@ function handleShipDrop(event) {
         carrierOne.remove();
     }
     if (
-        draggedShip === "carrier" &&
+        draggedShip === "carrier-one" &&
         rotationState === "rotated" &&
         dropCoordinatesArr[1] + 4 < 10 &&
         dropCoordinatesState === "water"
@@ -165,7 +165,7 @@ function handleShipDrop(event) {
         carrierOne.remove();
     }
     if (
-        draggedShip === "battleship" &&
+        draggedShip === "battleship-one" &&
         rotationState === "default" &&
         dropCoordinatesArr[0] + 3 < 10 &&
         dropCoordinatesState === "water"
@@ -181,7 +181,7 @@ function handleShipDrop(event) {
         battleshipOne.remove();
     }
     if (
-        draggedShip === "battleship" &&
+        draggedShip === "battleship-one" &&
         rotationState === "rotated" &&
         dropCoordinatesArr[1] + 3 < 10 &&
         dropCoordinatesState === "water"
@@ -197,7 +197,7 @@ function handleShipDrop(event) {
         battleshipOne.remove();
     }
     if (
-        draggedShip === "destroyer" &&
+        draggedShip === "destroyer-one" &&
         rotationState === "default" &&
         dropCoordinatesArr[0] + 2 < 10 &&
         dropCoordinatesState === "water"
@@ -213,7 +213,7 @@ function handleShipDrop(event) {
         destroyerOne.remove();
     }
     if (
-        draggedShip === "destroyer" &&
+        draggedShip === "destroyer-one" &&
         rotationState === "rotated" &&
         dropCoordinatesArr[1] + 2 < 10 &&
         dropCoordinatesState === "water"
@@ -229,7 +229,7 @@ function handleShipDrop(event) {
         destroyerOne.remove();
     }
     if (
-        draggedShip === "submarine" &&
+        draggedShip === "submarine-one" &&
         rotationState === "default" &&
         dropCoordinatesArr[0] + 2 < 10 &&
         dropCoordinatesState === "water"
@@ -245,7 +245,7 @@ function handleShipDrop(event) {
         submarineOne.remove();
     }
     if (
-        draggedShip === "submarine" &&
+        draggedShip === "submarine-one" &&
         rotationState === "rotated" &&
         dropCoordinatesArr[1] + 2 < 10 &&
         dropCoordinatesState === "water"
@@ -261,7 +261,7 @@ function handleShipDrop(event) {
         submarineOne.remove();
     }
     if (
-        draggedShip === "patrol-boat" &&
+        draggedShip === "patrol-boat-one" &&
         rotationState === "default" &&
         dropCoordinatesArr[0] + 1 < 10 &&
         dropCoordinatesState === "water"
@@ -277,7 +277,7 @@ function handleShipDrop(event) {
         patrolBoatOne.remove();
     }
     if (
-        draggedShip === "patrol-boat" &&
+        draggedShip === "patrol-boat-one" &&
         rotationState === "rotated" &&
         dropCoordinatesArr[1] + 1 < 10 &&
         dropCoordinatesState === "water"

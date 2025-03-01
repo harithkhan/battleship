@@ -126,7 +126,7 @@ export function renderPlayerOneDialogBoardMultiplayer() {
     });
 }
 
-export function renderTwoPlayerDialogBoardMultiplayer() {
+export function renderPlayerTwoDialogBoardMultiplayer() {
     const playerTwoBoard = getPlayerTwo().getBoard().getBoard();
     const playerTwoGridBoxes = document.querySelectorAll(
         ".two-player-dialog-board > .grid-box"

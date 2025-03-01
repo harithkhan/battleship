@@ -1,6 +1,10 @@
 import { playerOneShips, playerTwoShips } from "../logic/ships";
 import * as gameController from "../logic/game-controller";
-import { renderPlayerOneDialogBoard } from "./render.boards";
+import {
+    renderPlayerOneDialogBoard,
+    renderPlayerOneDialogBoardMultiplayer,
+    renderPlayerTwoBoard,
+    renderPlayerTwoDialogBoardMultiplayer } from "./render.boards";
 
 function checkAdjacentCoordinates(orientation, ship, player, x, y) {
     if (orientation === "x") {
@@ -158,6 +162,29 @@ function randomPlayerOneCoordinates(ship, orientation) {
     return [xCoordinate, yCoordinate];
 }
 
+function randomPlayerTwoCoordinates(ship, orientation) {
+    let xCoordinate;
+    let yCoordinate;
+    do {
+        xCoordinate = Math.floor(Math.random() * 10);
+        yCoordinate = Math.floor(Math.random() * 10);
+    } while (
+        gameController
+            .getPlayerTwo()
+            .getBoard()
+            .getContentsFromCoordinates(xCoordinate, yCoordinate)[1] !==
+            "water" ||
+        !checkAdjacentCoordinates(
+            orientation,
+            ship,
+            gameController.getPlayerTwo(),
+            xCoordinate,
+            yCoordinate
+        )
+    );
+    return [xCoordinate, yCoordinate];
+}
+
 export function playerOneRandom() {
     const playerOne = gameController.getPlayerOne();
     playerOne.getBoard().resetBoard();
@@ -228,22 +255,114 @@ export function playerOneRandom() {
             patrolBoatOrientation
         );
     renderPlayerOneDialogBoard();
-    const carrierOne = document.querySelector(".carrier-one");
-    const battleshipOne = document.querySelector(".battleship-one");
-    const destroyerOne = document.querySelector(".destroyer-one");
-    const submarineOne = document.querySelector(".submarine-one");
-    const patrolBoatOne = document.querySelector(".patrol-boat-one");
+    renderPlayerOneDialogBoardMultiplayer();
+    const carrierTwo = document.querySelector(".carrier-two");
+    const battleshipTwo = document.querySelector(".battleship-two");
+    const destroyerTwo = document.querySelector(".destroyer-two");
+    const submarineTwo = document.querySelector(".submarine-two");
+    const patrolBoatTwo = document.querySelector(".patrol-boat-two");
     if (
-        carrierOne &&
-        battleshipOne &&
-        destroyerOne &&
-        submarineOne &&
-        patrolBoatOne
+        carrierTwo &&
+        battleshipTwo &&
+        destroyerTwo &&
+        submarineTwo &&
+        patrolBoatTwo
     ) {
-        carrierOne.remove();
-        battleshipOne.remove();
-        destroyerOne.remove();
-        submarineOne.remove();
-        patrolBoatOne.remove();
+        carrierTwo.remove();
+        battleshipTwo.remove();
+        destroyerTwo.remove();
+        submarineTwo.remove();
+        patrolBoatTwo.remove();
+    }
+}
+
+export function playerTwoRandom() {
+    const playerTwo = gameController.getPlayerTwo();
+    playerTwo.getBoard().resetBoard();
+    const carrierOrientation = randomOrientation();
+    const battleshipOrientation = randomOrientation();
+    const destroyerOrientation = randomOrientation();
+    const submarineOrientation = randomOrientation();
+    const patrolBoatOrientation = randomOrientation();
+
+    const carrierCoordinates = randomPlayerTwoCoordinates(
+        playerTwoShips.carrier,
+        carrierOrientation
+    );
+    playerTwo
+        .getBoard()
+        .assignShip(
+            playerOneShips.carrier,
+            carrierCoordinates[0],
+            carrierCoordinates[1],
+            carrierOrientation
+        );
+    const battleshipCoordinates = randomPlayerTwoCoordinates(
+        playerOneShips.battleship,
+        battleshipOrientation
+    );
+    playerTwo
+        .getBoard()
+        .assignShip(
+            playerTwoShips.battleship,
+            battleshipCoordinates[0],
+            battleshipCoordinates[1],
+            battleshipOrientation
+        );
+    const destroyerCoordinates = randomPlayerTwoCoordinates(
+        playerTwoShips.destroyer,
+        destroyerOrientation
+    );
+    playerTwo
+        .getBoard()
+        .assignShip(
+            playerTwoShips.destroyer,
+            destroyerCoordinates[0],
+            destroyerCoordinates[1],
+            destroyerOrientation
+        );
+    const submarineCoordinates = randomPlayerTwoCoordinates(
+        playerTwoShips.submarine,
+        submarineOrientation
+    );
+    playerTwo
+        .getBoard()
+        .assignShip(
+            playerTwoShips.submarine,
+            submarineCoordinates[0],
+            submarineCoordinates[1],
+            submarineOrientation
+        );
+    const patrolBoatCoordinates = randomPlayerTwoCoordinates(
+        playerTwoShips.patrolBoat,
+        patrolBoatOrientation
+    );
+    playerTwo
+        .getBoard()
+        .assignShip(
+            playerTwoShips.patrolBoat,
+            patrolBoatCoordinates[0],
+            patrolBoatCoordinates[1],
+            patrolBoatOrientation
+        );
+    renderPlayerTwoBoard();
+    renderPlayerTwoDialogBoardMultiplayer();
+    const carrierTwo = document.querySelector(".carrier-two");
+    const battleshipTwo = document.querySelector(".battleship-two");
+    const destroyerTwo = document.querySelector(".destroyer-two");
+    const submarineTwo = document.querySelector(".submarine-two");
+    const patrolBoatTwo = document.querySelector(".patrol-boat-two");
+    if (
+        carrierTwo &&
+        battleshipTwo &&
+        destroyerTwo &&
+        submarineTwo &&
+        patrolBoatTwo
+    ) {
+        carrierTwo.remove();
+        battleshipTwo.remove();
+        destroyerTwo.remove();
+        submarineTwo.remove();
+        patrolBoatTwo.remove();
     }
 }

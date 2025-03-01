@@ -10,6 +10,8 @@ import {
     setGameWinner,
     getOtherPlayer,
 } from "../logic/game-controller";
+import { hideShips } from "./hide-ships";
+import { renderPlayerOneBoard, renderPlayerTwoBoard } from "./render.boards";
 
 function attack(player, coordinates) {
     const attackedBox =
@@ -44,6 +46,14 @@ function attack(player, coordinates) {
     }
     refreshWhoCanAttack();
     displayPlayerTurn();
+    if (getGameMode() === "two-player" && player === "player-one") {
+        hideShips(getPlayerTwo());
+        renderPlayerOneBoard();
+    }
+    if (getGameMode() === "two-player" && player === "player-two") {
+        hideShips(getPlayerOne());
+        renderPlayerTwoBoard();
+    }
     // Check if game over
     if (getPlayerTurn().getBoard().isGameOver()) {
         setGameWinner(getOtherPlayer());

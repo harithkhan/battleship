@@ -13,6 +13,7 @@ import {
     renderPlayerTwoDialogBoardMultiplayer,
 } from "./render.boards";
 import { playerOneRandom, playerTwoRandom } from "./ships-assignment";
+import { hideShips } from "./hide-ships";
 
 const dialogTwo = document.querySelector(".place-ships-two");
 const dialogTwoBoard = document.querySelector(".two-player-dialog-board");
@@ -158,6 +159,7 @@ function handlePlayClick() {
     ) {
         renderPlayerTwoBoard();
         renderPlayerOneBoard();
+        hideShips(getPlayerTwo());
         gameStart();
         displayPlayerTurn();
         refreshWhoCanAttack();

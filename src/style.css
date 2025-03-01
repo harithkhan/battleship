@@ -308,3 +308,11 @@ body {
 [data-space-state="ship"][data-hit-status="hit"] {
     background-color: red;
 }
+
+[data-space-state="hidden-ship"] {
+    background-color: aqua;
+}
+
+[data-space-state="hidden-ship"][data-hit-status="hit"] {
+    background-color: red;
+}

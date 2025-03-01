@@ -5,7 +5,7 @@ import { displayPlayerTurn } from "./information-display";
 import {
     renderPlayerOneBoard,
     renderPlayerOneDialogBoard,
-    renderPlayerTwoBoard,
+    renderComputerBoard,
 } from "./render.boards";
 import { assignComputerShips, playerOneRandom } from "./ships-assignment";
 
@@ -94,7 +94,7 @@ const shipsContainer = document.querySelector(".dialog-one-ships-container");
 function handlePlayClick() {
     if (shipsContainer.childElementCount === 0) {
         assignComputerShips();
-        renderPlayerTwoBoard();
+        renderComputerBoard();
         renderPlayerOneBoard();
         gameStart();
         displayPlayerTurn();

@@ -78,6 +78,45 @@ export function renderPlayerOneDialogBoard() {
     });
 }
 
+export function renderComputerBoard() {
+    const playerTwoBoard = getPlayerTwo().getBoard().getBoard();
+    const playerTwoGridBoxes = document.querySelectorAll(
+        ".player-two-board-container > .grid-box"
+    );
+    playerTwoBoard.forEach((xCoordinate) => {
+        xCoordinate.forEach((yCoordinate) => {
+            if (yCoordinate[1] !== "water") {
+                const shipCoordinates = [
+                    playerTwoBoard.indexOf(xCoordinate),
+                    xCoordinate.indexOf(yCoordinate),
+                ];
+                const shipCoordinatesString = shipCoordinates.join(",");
+                playerTwoGridBoxes.forEach((i) => {
+                    const gridBox = i;
+                    if (gridBox.dataset.coordinates === shipCoordinatesString) {
+                        gridBox.dataset.spaceState = "hidden-ship";
+                    }
+                });
+            }
+            if (yCoordinate[1] === "water") {
+                const waterCoordinates = [
+                    playerTwoBoard.indexOf(xCoordinate),
+                    xCoordinate.indexOf(yCoordinate),
+                ];
+                const waterCoordinatesString = waterCoordinates.join(",");
+                playerTwoGridBoxes.forEach((i) => {
+                    const gridBox = i;
+                    if (
+                        gridBox.dataset.coordinates === waterCoordinatesString
+                    ) {
+                        gridBox.dataset.spaceState = "water";
+                    }
+                });
+            }
+        });
+    });
+}
+
 export function renderPlayerTwoBoard() {
     const playerTwoBoard = getPlayerTwo().getBoard().getBoard();
     const playerTwoGridBoxes = document.querySelectorAll(

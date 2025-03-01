@@ -12,7 +12,7 @@ import { assignComputerShips, playerOneRandom } from "./ships-assignment";
 
 const dialogTwo = document.querySelector(".place-ships-two");
 const dialogTwoBoard = document.querySelector(".two-player-dialog-board");
-const rotateButton = document.querySelector(".rotate-button");
+const rotateButton = document.querySelector(".rotate-button-two");
 const dialogTwoHeader = document.querySelector(".dialog-two-header");
 
 dialogTwoHeader.textContent = "Player one, place your ships!";
@@ -51,6 +51,7 @@ const submarineTwo = document.querySelector(".submarine-two");
 const patrolBoatTwo = document.querySelector(".patrol-boat-two");
 
 function rotateShips() {
+    console.log("ping");
     if (rotationState === "default") {
         carrierTwo.style.width = "3rem";
         carrierTwo.style.height = "15rem";
@@ -89,9 +90,9 @@ function rotateShips() {
 }
 
 const playButton = document.querySelector(".play-button-two");
-const randomButton = document.querySelector(".random-button");
+const randomButton = document.querySelector(".random-button-two");
 const shipsContainer = document.querySelector(".dialog-two-ships-container");
-const placeButton = document.querySelector(".place-button");
+const placeButton = document.querySelector(".place-button-two");
 
 function handlePlayClick() {
     if (shipsContainer.childElementCount === 0) {
@@ -111,3 +112,5 @@ export function populateDialogTwo() {
     randomButton.addEventListener("click", playerOneRandom);
     playButton.addEventListener("click", handlePlayClick);
 }
+
+

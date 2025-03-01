@@ -10,8 +10,7 @@ import {
     setGameWinner,
     getOtherPlayer,
 } from "../logic/game-controller";
-import { hideShips } from "./hide-ships";
-import { renderPlayerOneBoard, renderPlayerTwoBoard } from "./render.boards";
+import { insertPassDeviceButton } from "./pass-device";
 
 function attack(player, coordinates) {
     const attackedBox =
@@ -47,12 +46,10 @@ function attack(player, coordinates) {
     refreshWhoCanAttack();
     displayPlayerTurn();
     if (getGameMode() === "two-player" && player === "player-one") {
-        hideShips(getPlayerTwo());
-        renderPlayerOneBoard();
+        insertPassDeviceButton();
     }
     if (getGameMode() === "two-player" && player === "player-two") {
-        hideShips(getPlayerOne());
-        renderPlayerTwoBoard();
+        insertPassDeviceButton();
     }
     // Check if game over
     if (getPlayerTurn().getBoard().isGameOver()) {

@@ -2,6 +2,7 @@ import * as gameController from "../logic/game-controller";
 import { players } from "../logic/players";
 import { renderPlayerOneBoard, renderPlayerTwoBoard } from "./render.boards";
 import { populateDialogOne } from "./populate-dialog-one";
+import { populateDialogTwo } from "./populate-dialog-two";
 
 const twoPlayerButton = document.getElementById("two-player");
 const playerOneInput = document.getElementById("input-player-1");
@@ -58,6 +59,7 @@ function handleStartClick(event) {
         renderPlayerTwoBoard();
         gameController.gameStart();
         dialog.close();
+        populateDialogTwo();
     }
 }
 

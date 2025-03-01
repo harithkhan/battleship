@@ -12,16 +12,17 @@ export const gameboard = () => {
 
     const getContentsFromCoordinates = (x, y) => board[x][y];
 
+    let ships = {};
+
+    const getShips = () => ships;
+
     const resetBoard = () => {
         board = [];
         for (let i = 0; i < 10; i++) {
             board.push(Array.from({ length: 10 }, () => ["not hit", "water"]));
         }
+        ships = {};
     };
-
-    const ships = {};
-
-    const getShips = () => ships;
 
     const assignShip = (ship, xCoordinate, yCoordinate, orientation = "x") => {
         if (orientation === "x") {

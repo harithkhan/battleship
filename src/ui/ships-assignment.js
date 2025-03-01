@@ -3,7 +3,6 @@ import * as gameController from "../logic/game-controller";
 import {
     renderPlayerOneDialogBoard,
     renderPlayerOneDialogBoardMultiplayer,
-    renderPlayerTwoBoard,
     renderPlayerTwoDialogBoardMultiplayer,
 } from "./render.boards";
 
@@ -368,7 +367,6 @@ export function playerTwoRandom() {
             patrolBoatCoordinates[1],
             patrolBoatOrientation
         );
-    renderPlayerTwoBoard();
     renderPlayerTwoDialogBoardMultiplayer();
 
     const carrierTwo = document.querySelector(".carrier-two");

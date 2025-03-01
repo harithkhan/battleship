@@ -20,6 +20,21 @@ export function renderPlayerOneBoard() {
                     }
                 });
             }
+            if (yCoordinate[1] === "water") {
+                const waterCoordinates = [
+                    playerOneBoard.indexOf(xCoordinate),
+                    xCoordinate.indexOf(yCoordinate),
+                ];
+                const waterCoordinatesString = waterCoordinates.join(",");
+                playerOneGridBoxes.forEach((i) => {
+                    const gridBox = i;
+                    if (
+                        gridBox.dataset.coordinates === waterCoordinatesString
+                    ) {
+                        gridBox.dataset.spaceState = "water";
+                    }
+                });
+            }
         });
     });
 }
@@ -80,6 +95,21 @@ export function renderPlayerTwoBoard() {
                     const gridBox = i;
                     if (gridBox.dataset.coordinates === shipCoordinatesString) {
                         gridBox.dataset.spaceState = "ship";
+                    }
+                });
+            }
+            if (yCoordinate[1] === "water") {
+                const waterCoordinates = [
+                    playerTwoBoard.indexOf(xCoordinate),
+                    xCoordinate.indexOf(yCoordinate),
+                ];
+                const waterCoordinatesString = waterCoordinates.join(",");
+                playerTwoGridBoxes.forEach((i) => {
+                    const gridBox = i;
+                    if (
+                        gridBox.dataset.coordinates === waterCoordinatesString
+                    ) {
+                        gridBox.dataset.spaceState = "water";
                     }
                 });
             }

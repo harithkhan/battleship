@@ -71,6 +71,14 @@ test("New ships cannot be assigned to taken coordinates", () => {
     );
 });
 
+test("Reset gameboard", () => {
+    expect(playerTwo.getBoard()[0][0][1]).toBe(carrier.getName());
+    expect(playerTwo.getBoard()[0][1][1]).toBe(carrier.getName());
+    playerTwo.resetBoard();
+    expect(playerTwo.getBoard()[0][0][1]).toBe("water");
+    expect(playerTwo.getBoard()[0][1][1]).toBe("water");
+});
+
 describe("Ships hit with receiveAttack()", () => {
     const testBoardOne = gameboard();
     const testBoardTwo = gameboard();

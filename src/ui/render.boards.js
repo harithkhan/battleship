@@ -44,6 +44,21 @@ export function renderPlayerOneDialogBoard() {
                     }
                 });
             }
+            if (yCoordinate[1] === "water") {
+                const waterCoordinates = [
+                    playerOneBoard.indexOf(xCoordinate),
+                    xCoordinate.indexOf(yCoordinate),
+                ];
+                const waterCoordinatesString = waterCoordinates.join(",");
+                playerOneGridBoxes.forEach((i) => {
+                    const gridBox = i;
+                    if (
+                        gridBox.dataset.coordinates === waterCoordinatesString
+                    ) {
+                        gridBox.dataset.spaceState = "water";
+                    }
+                });
+            }
         });
     });
 }

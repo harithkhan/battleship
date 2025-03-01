@@ -7,7 +7,7 @@ import {
     renderPlayerOneDialogBoard,
     renderPlayerTwoBoard,
 } from "./render.boards";
-import { assignComputerShips } from "./ships-assignment";
+import { assignComputerShips, playerOneRandom } from "./ships-assignment";
 
 const playerOneDialog = document.querySelector(".place-ships-one");
 const playerOneBoard = document.querySelector(".player-one-dialog-board");
@@ -43,57 +43,59 @@ function createPlayerOneBoard() {
 }
 
 let rotationState = "default";
-const carrier = document.querySelector(".carrier");
-const battleship = document.querySelector(".battleship");
-const destroyer = document.querySelector(".destroyer");
-const submarine = document.querySelector(".submarine");
-const patrolBoat = document.querySelector(".patrol-boat");
+const carrierOne = document.querySelector(".carrier-one");
+const battleshipOne = document.querySelector(".battleship-one");
+const destroyerOne = document.querySelector(".destroyer-one");
+const submarineOne = document.querySelector(".submarine-one");
+const patrolBoatOne = document.querySelector(".patrol-boat-one");
 
 function rotateShips() {
     if (rotationState === "default") {
-        carrier.style.width = "3rem";
-        carrier.style.height = "15rem";
-        carrier.gridArea = "2 / 2 / 7 / 3";
-        battleship.style.width = "3rem";
-        battleship.style.height = "12rem";
-        battleship.style.gridArea = "2 / 4 / 6 / 5";
-        destroyer.style.width = "3rem";
-        destroyer.style.height = "9rem";
-        destroyer.style.gridArea = "2 / 6 / 5 / 7";
-        submarine.style.width = "3rem";
-        submarine.style.height = "9rem";
-        submarine.style.gridArea = "7 / 4 / 10 / 5";
-        patrolBoat.style.width = "3rem";
-        patrolBoat.style.height = "6rem";
-        patrolBoat.style.gridArea = "6 / 6 / 8 / 7";
+        carrierOne.style.width = "3rem";
+        carrierOne.style.height = "15rem";
+        carrierOne.gridArea = "2 / 2 / 7 / 3";
+        battleshipOne.style.width = "3rem";
+        battleshipOne.style.height = "12rem";
+        battleshipOne.style.gridArea = "2 / 4 / 6 / 5";
+        destroyerOne.style.width = "3rem";
+        destroyerOne.style.height = "9rem";
+        destroyerOne.style.gridArea = "2 / 6 / 5 / 7";
+        submarineOne.style.width = "3rem";
+        submarineOne.style.height = "9rem";
+        submarineOne.style.gridArea = "7 / 4 / 10 / 5";
+        patrolBoatOne.style.width = "3rem";
+        patrolBoatOne.style.height = "6rem";
+        patrolBoatOne.style.gridArea = "6 / 6 / 8 / 7";
         rotationState = "rotated";
     } else if (rotationState === "rotated") {
-        carrier.style.width = "15rem";
-        carrier.style.height = "3rem";
-        carrier.gridArea = "2 / 2 / 3 / 7";
-        battleship.style.width = "12rem";
-        battleship.style.height = "3rem";
-        battleship.style.gridArea = "4 / 2 / 5 / 6";
-        destroyer.style.width = "9rem";
-        destroyer.style.height = "3rem";
-        destroyer.style.gridArea = "6 / 2 / 7 / 5";
-        submarine.style.width = "9rem";
-        submarine.style.height = "3rem";
-        submarine.style.gridArea = "8 / 2 / 9 / 5";
-        patrolBoat.style.width = "6rem";
-        patrolBoat.style.height = "3rem";
-        patrolBoat.style.gridArea = "9 / 5 / 10 / 7";
+        carrierOne.style.width = "15rem";
+        carrierOne.style.height = "3rem";
+        carrierOne.gridArea = "2 / 2 / 3 / 7";
+        battleshipOne.style.width = "12rem";
+        battleshipOne.style.height = "3rem";
+        battleshipOne.style.gridArea = "4 / 2 / 5 / 6";
+        destroyerOne.style.width = "9rem";
+        destroyerOne.style.height = "3rem";
+        destroyerOne.style.gridArea = "6 / 2 / 7 / 5";
+        submarineOne.style.width = "9rem";
+        submarineOne.style.height = "3rem";
+        submarineOne.style.gridArea = "8 / 2 / 9 / 5";
+        patrolBoatOne.style.width = "6rem";
+        patrolBoatOne.style.height = "3rem";
+        patrolBoatOne.style.gridArea = "9 / 5 / 10 / 7";
         rotationState = "default";
     }
 }
 
 const playButton = document.querySelector(".play-button-one");
+const randomButton = document.querySelector(".random-button");
 const shipsContainer = document.querySelector(".dialog-one-ships-container");
 
 function handlePlayClick() {
     if (shipsContainer.childElementCount === 0) {
         assignComputerShips();
         renderPlayerTwoBoard();
+        renderPlayerOneBoard();
         gameStart();
         displayPlayerTurn();
         refreshWhoCanAttack();
@@ -105,6 +107,7 @@ export function populateDialogOne() {
     playerOneDialog.showModal();
     createPlayerOneBoard();
     rotateButton.addEventListener("click", rotateShips);
+    randomButton.addEventListener("click", playerOneRandom);
     playButton.addEventListener("click", handlePlayClick);
 }
 
@@ -114,11 +117,11 @@ function setDraggedShip(event) {
     draggedShip = event.target.className;
 }
 
-carrier.addEventListener("dragstart", setDraggedShip);
-battleship.addEventListener("dragstart", setDraggedShip);
-destroyer.addEventListener("dragstart", setDraggedShip);
-submarine.addEventListener("dragstart", setDraggedShip);
-patrolBoat.addEventListener("dragstart", setDraggedShip);
+carrierOne.addEventListener("dragstart", setDraggedShip);
+battleshipOne.addEventListener("dragstart", setDraggedShip);
+destroyerOne.addEventListener("dragstart", setDraggedShip);
+submarineOne.addEventListener("dragstart", setDraggedShip);
+patrolBoatOne.addEventListener("dragstart", setDraggedShip);
 
 function handleShipDrop(event) {
     event.preventDefault();
@@ -143,7 +146,7 @@ function handleShipDrop(event) {
                 dropCoordinatesArr[1],
                 "x"
             );
-        carrier.remove();
+        carrierOne.remove();
     }
     if (
         draggedShip === "carrier" &&
@@ -159,7 +162,7 @@ function handleShipDrop(event) {
                 dropCoordinatesArr[1],
                 "y"
             );
-        carrier.remove();
+        carrierOne.remove();
     }
     if (
         draggedShip === "battleship" &&
@@ -175,7 +178,7 @@ function handleShipDrop(event) {
                 dropCoordinatesArr[1],
                 "x"
             );
-        battleship.remove();
+        battleshipOne.remove();
     }
     if (
         draggedShip === "battleship" &&
@@ -191,7 +194,7 @@ function handleShipDrop(event) {
                 dropCoordinatesArr[1],
                 "y"
             );
-        battleship.remove();
+        battleshipOne.remove();
     }
     if (
         draggedShip === "destroyer" &&
@@ -207,7 +210,7 @@ function handleShipDrop(event) {
                 dropCoordinatesArr[1],
                 "x"
             );
-        destroyer.remove();
+        destroyerOne.remove();
     }
     if (
         draggedShip === "destroyer" &&
@@ -223,7 +226,7 @@ function handleShipDrop(event) {
                 dropCoordinatesArr[1],
                 "y"
             );
-        destroyer.remove();
+        destroyerOne.remove();
     }
     if (
         draggedShip === "submarine" &&
@@ -239,7 +242,7 @@ function handleShipDrop(event) {
                 dropCoordinatesArr[1],
                 "x"
             );
-        submarine.remove();
+        submarineOne.remove();
     }
     if (
         draggedShip === "submarine" &&
@@ -255,7 +258,7 @@ function handleShipDrop(event) {
                 dropCoordinatesArr[1],
                 "y"
             );
-        submarine.remove();
+        submarineOne.remove();
     }
     if (
         draggedShip === "patrol-boat" &&
@@ -271,7 +274,7 @@ function handleShipDrop(event) {
                 dropCoordinatesArr[1],
                 "x"
             );
-        patrolBoat.remove();
+        patrolBoatOne.remove();
     }
     if (
         draggedShip === "patrol-boat" &&
@@ -287,7 +290,7 @@ function handleShipDrop(event) {
                 dropCoordinatesArr[1],
                 "y"
             );
-        patrolBoat.remove();
+        patrolBoatOne.remove();
     }
     renderPlayerOneBoard();
     renderPlayerOneDialogBoard();

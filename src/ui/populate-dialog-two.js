@@ -58,78 +58,64 @@ let placementTurn = "player-one";
 
 function rotateShips() {
     const newCarrierTwo = document.querySelector(".carrier-two");
-    const newBattleshipTwo = document.querySelector("battleship-two");
-    const newDestroyerTwo = document.querySelector("destroyer-two");
-    const newSubmarineTwo = document.querySelector("submarien-two");
-    const newPatrolBoatTwo = document.querySelector("patrol-boat-two");
+    const newBattleshipTwo = document.querySelector(".battleship-two");
+    const newDestroyerTwo = document.querySelector(".destroyer-two");
+    const newSubmarineTwo = document.querySelector(".submarine-two");
+    const newPatrolBoatTwo = document.querySelector(".patrol-boat-two");
 
-    if (rotationState === "default" && placementTurn === "player-one") {
-        carrierTwo.style.width = "3rem";
-        carrierTwo.style.height = "15rem";
-        carrierTwo.gridArea = "2 / 2 / 7 / 3";
-        battleshipTwo.style.width = "3rem";
-        battleshipTwo.style.height = "12rem";
-        battleshipTwo.style.gridArea = "2 / 4 / 6 / 5";
-        destroyerTwo.style.width = "3rem";
-        destroyerTwo.style.height = "9rem";
-        destroyerTwo.style.gridArea = "2 / 6 / 5 / 7";
-        submarineTwo.style.width = "3rem";
-        submarineTwo.style.height = "9rem";
-        submarineTwo.style.gridArea = "7 / 4 / 10 / 5";
-        patrolBoatTwo.style.width = "3rem";
-        patrolBoatTwo.style.height = "6rem";
-        patrolBoatTwo.style.gridArea = "6 / 6 / 8 / 7";
+    if (rotationState === "default") {
+        if (newCarrierTwo) {
+            newCarrierTwo.style.width = "3rem";
+            newCarrierTwo.style.height = "15rem";
+            newCarrierTwo.gridArea = "2 / 2 / 7 / 3";
+        }
+        if (newBattleshipTwo) {
+            newBattleshipTwo.style.width = "3rem";
+            newBattleshipTwo.style.height = "12rem";
+            newBattleshipTwo.style.gridArea = "2 / 4 / 6 / 5";
+        }
+        if (newDestroyerTwo) {
+            newDestroyerTwo.style.width = "3rem";
+            newDestroyerTwo.style.height = "9rem";
+            newDestroyerTwo.style.gridArea = "2 / 6 / 5 / 7";
+        }
+        if (newSubmarineTwo) {
+            newSubmarineTwo.style.width = "3rem";
+            newSubmarineTwo.style.height = "9rem";
+            newSubmarineTwo.style.gridArea = "7 / 4 / 10 / 5";
+        }
+        if (newPatrolBoatTwo) {
+            newPatrolBoatTwo.style.width = "3rem";
+            newPatrolBoatTwo.style.height = "6rem";
+            newPatrolBoatTwo.style.gridArea = "6 / 6 / 8 / 7";
+        }
         rotationState = "rotated";
-    } else if (rotationState === "rotated" && placementTurn === "player-one") {
-        carrierTwo.style.width = "15rem";
-        carrierTwo.style.height = "3rem";
-        carrierTwo.gridArea = "2 / 2 / 3 / 7";
-        battleshipTwo.style.width = "12rem";
-        battleshipTwo.style.height = "3rem";
-        battleshipTwo.style.gridArea = "4 / 2 / 5 / 6";
-        destroyerTwo.style.width = "9rem";
-        destroyerTwo.style.height = "3rem";
-        destroyerTwo.style.gridArea = "6 / 2 / 7 / 5";
-        submarineTwo.style.width = "9rem";
-        submarineTwo.style.height = "3rem";
-        submarineTwo.style.gridArea = "8 / 2 / 9 / 5";
-        patrolBoatTwo.style.width = "6rem";
-        patrolBoatTwo.style.height = "3rem";
-        patrolBoatTwo.style.gridArea = "9 / 5 / 10 / 7";
-        rotationState = "default";
-    } else if (rotationState === "default" && placementTurn === "player-two") {
-        newCarrierTwo.style.width = "3rem";
-        newCarrierTwo.style.height = "15rem";
-        newCarrierTwo.gridArea = "2 / 2 / 7 / 3";
-        newBattleshipTwo.style.width = "3rem";
-        newBattleshipTwo.style.height = "12rem";
-        newBattleshipTwo.style.gridArea = "2 / 4 / 6 / 5";
-        newDestroyerTwo.style.width = "3rem";
-        newDestroyerTwo.style.height = "9rem";
-        newDestroyerTwo.style.gridArea = "2 / 6 / 5 / 7";
-        newSubmarineTwo.style.width = "3rem";
-        newSubmarineTwo.style.height = "9rem";
-        newSubmarineTwo.style.gridArea = "7 / 4 / 10 / 5";
-        newPatrolBoatTwo.style.width = "3rem";
-        newPatrolBoatTwo.style.height = "6rem";
-        newPatrolBoatTwo.style.gridArea = "6 / 6 / 8 / 7";
-        rotationState = "rotated";
-    } else if (rotationState === "rotated" && placementTurn === "player-two") {
-        newCarrierTwo.style.width = "15rem";
-        newCarrierTwo.style.height = "3rem";
-        newCarrierTwo.gridArea = "2 / 2 / 3 / 7";
-        newBattleshipTwo.style.width = "12rem";
-        newBattleshipTwo.style.height = "3rem";
-        newBattleshipTwo.style.gridArea = "4 / 2 / 5 / 6";
-        newDestroyerTwo.style.width = "9rem";
-        newDestroyerTwo.style.height = "3rem";
-        newDestroyerTwo.style.gridArea = "6 / 2 / 7 / 5";
-        newSubmarineTwo.style.width = "9rem";
-        newSubmarineTwo.style.height = "3rem";
-        newSubmarineTwo.style.gridArea = "8 / 2 / 9 / 5";
-        newPatrolBoatTwo.style.width = "6rem";
-        newPatrolBoatTwo.style.height = "3rem";
-        newPatrolBoatTwo.style.gridArea = "9 / 5 / 10 / 7";
+    } else if (rotationState === "rotated") {
+        if (newCarrierTwo) {
+            newCarrierTwo.style.width = "15rem";
+            newCarrierTwo.style.height = "3rem";
+            newCarrierTwo.gridArea = "2 / 2 / 3 / 7";
+        }
+        if (newBattleshipTwo) {
+            newBattleshipTwo.style.width = "12rem";
+            newBattleshipTwo.style.height = "3rem";
+            newBattleshipTwo.style.gridArea = "4 / 2 / 5 / 6";
+        }
+        if (newDestroyerTwo) {
+            newDestroyerTwo.style.width = "9rem";
+            newDestroyerTwo.style.height = "3rem";
+            newDestroyerTwo.style.gridArea = "6 / 2 / 7 / 5";
+        }
+        if (newSubmarineTwo) {
+            newSubmarineTwo.style.width = "9rem";
+            newSubmarineTwo.style.height = "3rem";
+            newSubmarineTwo.style.gridArea = "8 / 2 / 9 / 5";
+        }
+        if (newPatrolBoatTwo) {
+            newPatrolBoatTwo.style.width = "6rem";
+            newPatrolBoatTwo.style.height = "3rem";
+            newPatrolBoatTwo.style.gridArea = "9 / 5 / 10 / 7";
+        }
         rotationState = "default";
     }
 }

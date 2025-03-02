@@ -14,6 +14,7 @@ import {
 } from "./render.boards";
 import { playerOneRandom, playerTwoRandom } from "./ships-assignment";
 import { hideShips } from "./hide-ships";
+import * as gameController from "../logic/game-controller";
 
 const dialogTwo = document.querySelector(".place-ships-two");
 const dialogTwoBoard = document.querySelector(".two-player-dialog-board");
@@ -53,29 +54,15 @@ const destroyerTwo = document.querySelector(".destroyer-two");
 const submarineTwo = document.querySelector(".submarine-two");
 const patrolBoatTwo = document.querySelector(".patrol-boat-two");
 
-const newCarrierTwo = document.createElement("div");
-newCarrierTwo.className = "carrier-two";
-newCarrierTwo.draggable = "true";
-
-const newBattleshipTwo = document.createElement("div");
-newBattleshipTwo.className = "battleship-two";
-newBattleshipTwo.draggable = "true";
-
-const newDestroyerTwo = document.createElement("div");
-newDestroyerTwo.className = "destroyer-two";
-newDestroyerTwo.draggable = "true";
-
-const newSubmarineTwo = document.createElement("div");
-newSubmarineTwo.className = "submarine-two";
-newSubmarineTwo.draggable = "true";
-
-const newPatrolBoatTwo = document.createElement("div");
-newPatrolBoatTwo.className = "patrol-boat-two";
-newPatrolBoatTwo.draggable = "true";
-
 let placementTurn = "player-one";
 
 function rotateShips() {
+    const newCarrierTwo = document.querySelector(".carrier-two");
+    const newBattleshipTwo = document.querySelector("battleship-two");
+    const newDestroyerTwo = document.querySelector("destroyer-two");
+    const newSubmarineTwo = document.querySelector("submarien-two");
+    const newPatrolBoatTwo = document.querySelector("patrol-boat-two");
+
     if (rotationState === "default" && placementTurn === "player-one") {
         carrierTwo.style.width = "3rem";
         carrierTwo.style.height = "15rem";
@@ -148,6 +135,7 @@ function rotateShips() {
 }
 
 const randomButton = document.querySelector(".random-button-two");
+const resetButtonTwo = document.querySelector(".reset-button-two");
 const shipsContainer = document.querySelector(".dialog-two-ships-container");
 const placeButton = document.querySelector(".place-button-two");
 
@@ -194,11 +182,35 @@ function createPlayerTwoBoard() {
 
 let draggedShip = null;
 
+function resetDraggedShip() {
+    draggedShip = null;
+    rotationState = "default";
+}
+
 function setDraggedShip(event) {
     draggedShip = event.target.className;
 }
 
 function handlePlaceClick() {
+    const newCarrierTwo = document.createElement("div");
+    newCarrierTwo.className = "carrier-two";
+    newCarrierTwo.draggable = "true";
+
+    const newBattleshipTwo = document.createElement("div");
+    newBattleshipTwo.className = "battleship-two";
+    newBattleshipTwo.draggable = "true";
+
+    const newDestroyerTwo = document.createElement("div");
+    newDestroyerTwo.className = "destroyer-two";
+    newDestroyerTwo.draggable = "true";
+
+    const newSubmarineTwo = document.createElement("div");
+    newSubmarineTwo.className = "submarine-two";
+    newSubmarineTwo.draggable = "true";
+
+    const newPatrolBoatTwo = document.createElement("div");
+    newPatrolBoatTwo.className = "patrol-boat-two";
+    newPatrolBoatTwo.draggable = "true";
     if (
         placementTurn === "player-one" &&
         shipsContainer.childElementCount === 0
@@ -237,11 +249,79 @@ function handlePlaceClick() {
     }
 }
 
+function handleResetTwoPlayerOneClick() {
+    shipsContainer.innerHTML = "";
+    const gridBoxes = document.querySelectorAll(
+        ".two-player-dialog-board > .grid-box"
+    );
+    gridBoxes.forEach((i) => {
+        const gridBox = i;
+        gridBox.dataset.spaceState = "water";
+    });
+    gameController.getPlayerOne().getBoard().resetBoard();
+    gridBoxes.forEach((i) => {
+        const gridBox = i;
+        gridBox.addEventListener("dragover", (event) => {
+            event.preventDefault(); // To allow dropping
+        });
+        gridBox.addEventListener("drop", (event) => {
+            event.preventDefault();
+            // eslint-disable-next-line no-use-before-define
+            handleShipDropPlayerOne(event);
+        });
+    });
+
+    const newCarrierTwo = document.createElement("div");
+    newCarrierTwo.className = "carrier-two";
+    newCarrierTwo.draggable = "true";
+
+    const newBattleshipTwo = document.createElement("div");
+    newBattleshipTwo.className = "battleship-two";
+    newBattleshipTwo.draggable = "true";
+
+    const newDestroyerTwo = document.createElement("div");
+    newDestroyerTwo.className = "destroyer-two";
+    newDestroyerTwo.draggable = "true";
+
+    const newSubmarineTwo = document.createElement("div");
+    newSubmarineTwo.className = "submarine-two";
+    newSubmarineTwo.draggable = "true";
+
+    const newPatrolBoatTwo = document.createElement("div");
+    newPatrolBoatTwo.className = "patrol-boat-two";
+    newPatrolBoatTwo.draggable = "true";
+
+    if (newCarrierTwo) {
+        newCarrierTwo.addEventListener("dragstart", setDraggedShip);
+    }
+    if (newBattleshipTwo) {
+        newBattleshipTwo.addEventListener("dragstart", setDraggedShip);
+    }
+    if (newDestroyerTwo) {
+        newDestroyerTwo.addEventListener("dragstart", setDraggedShip);
+    }
+    if (newSubmarineTwo) {
+        newSubmarineTwo.addEventListener("dragstart", setDraggedShip);
+    }
+    if (newPatrolBoatTwo) {
+        newPatrolBoatTwo.addEventListener("dragstart", setDraggedShip);
+    }
+
+    shipsContainer.appendChild(newCarrierTwo);
+    shipsContainer.appendChild(newBattleshipTwo);
+    shipsContainer.appendChild(newDestroyerTwo);
+    shipsContainer.appendChild(newSubmarineTwo);
+    shipsContainer.appendChild(newPatrolBoatTwo);
+
+    resetDraggedShip();
+}
+
 export function populateDialogTwo() {
     dialogTwo.showModal();
     createPlayerOneBoard();
     rotateButton.addEventListener("click", rotateShips);
     randomButton.addEventListener("click", playerOneRandom);
+    resetButtonTwo.addEventListener("click", handleResetTwoPlayerOneClick);
     placeButton.addEventListener("click", handlePlaceClick);
 }
 
@@ -253,6 +333,13 @@ patrolBoatTwo.addEventListener("dragstart", setDraggedShip);
 
 function handleShipDropPlayerOne(event) {
     event.preventDefault();
+
+    const newCarrierTwo = document.querySelector(".carrier-two");
+    const newBattleshipTwo = document.querySelector(".battleship-two");
+    const newDestroyerTwo = document.querySelector(".destroyer-two");
+    const newSubmarineTwo = document.querySelector(".submarine-two");
+    const newPatrolBoatTwo = document.querySelector(".patrol-boat-two");
+
     const dropCoordinatesStr = event.target.dataset.coordinates;
     const dropCoordinatesArrStr = dropCoordinatesStr.split(",");
     const dropCoordinatesArr = [
@@ -274,7 +361,7 @@ function handleShipDropPlayerOne(event) {
                 dropCoordinatesArr[1],
                 "x"
             );
-        carrierTwo.remove();
+        newCarrierTwo.remove();
     }
     if (
         draggedShip === "carrier-two" &&
@@ -290,7 +377,7 @@ function handleShipDropPlayerOne(event) {
                 dropCoordinatesArr[1],
                 "y"
             );
-        carrierTwo.remove();
+        newCarrierTwo.remove();
     }
     if (
         draggedShip === "battleship-two" &&
@@ -306,7 +393,7 @@ function handleShipDropPlayerOne(event) {
                 dropCoordinatesArr[1],
                 "x"
             );
-        battleshipTwo.remove();
+        newBattleshipTwo.remove();
     }
     if (
         draggedShip === "battleship-two" &&
@@ -322,7 +409,7 @@ function handleShipDropPlayerOne(event) {
                 dropCoordinatesArr[1],
                 "y"
             );
-        battleshipTwo.remove();
+        newBattleshipTwo.remove();
     }
     if (
         draggedShip === "destroyer-two" &&
@@ -338,7 +425,7 @@ function handleShipDropPlayerOne(event) {
                 dropCoordinatesArr[1],
                 "x"
             );
-        destroyerTwo.remove();
+        newDestroyerTwo.remove();
     }
     if (
         draggedShip === "destroyer-two" &&
@@ -354,7 +441,7 @@ function handleShipDropPlayerOne(event) {
                 dropCoordinatesArr[1],
                 "y"
             );
-        destroyerTwo.remove();
+        newDestroyerTwo.remove();
     }
     if (
         draggedShip === "submarine-two" &&
@@ -370,7 +457,7 @@ function handleShipDropPlayerOne(event) {
                 dropCoordinatesArr[1],
                 "x"
             );
-        submarineTwo.remove();
+        newSubmarineTwo.remove();
     }
     if (
         draggedShip === "submarine-two" &&
@@ -386,7 +473,7 @@ function handleShipDropPlayerOne(event) {
                 dropCoordinatesArr[1],
                 "y"
             );
-        submarineTwo.remove();
+        newSubmarineTwo.remove();
     }
     if (
         draggedShip === "patrol-boat-two" &&
@@ -402,7 +489,7 @@ function handleShipDropPlayerOne(event) {
                 dropCoordinatesArr[1],
                 "x"
             );
-        patrolBoatTwo.remove();
+        newPatrolBoatTwo.remove();
     }
     if (
         draggedShip === "patrol-boat-two" &&
@@ -418,7 +505,7 @@ function handleShipDropPlayerOne(event) {
                 dropCoordinatesArr[1],
                 "y"
             );
-        patrolBoatTwo.remove();
+        newPatrolBoatTwo.remove();
     }
     renderPlayerOneBoard();
     renderPlayerOneDialogBoardMultiplayer();

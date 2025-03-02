@@ -9,25 +9,10 @@ import { handleAttack } from "./attack";
 
 const gameButtonsContainer = document.querySelector(".game-buttons-container");
 
-function receiveDevice() {
-    if (getPlayerTurn() === getPlayerOne()) {
-        renderPlayerOneBoard();
-    }
-    if (getPlayerTurn() === getPlayerTwo()) {
-        renderPlayerTwoBoard();
-    }
-    const receiveDeviceButton = document.querySelector(
-        ".receive-device-button"
-    );
-    receiveDeviceButton.remove();
-
+function removePlayerOneAttackListeners() {
     const playerOneGridBoxes = document.querySelectorAll(
         ".player-one-board-container > .grid-box"
     );
-    const playerTwoGridBoxes = document.querySelectorAll(
-        ".player-two-board-container > .grid-box"
-    );
-
     const playerOneBoard = getPlayerOne().getBoard().getBoard();
     playerOneBoard.forEach((xCoordinate) => {
         xCoordinate.forEach((yCoordinate) => {
@@ -38,13 +23,18 @@ function receiveDevice() {
                 ].join(",");
                 playerOneGridBoxes.forEach((gridBox) => {
                     if (gridBox.dataset.coordinates === coordinatesStr) {
-                        gridBox.addEventListener("click", handleAttack);
+                        gridBox.removeEventListener("click", handleAttack);
                     }
                 });
             }
         });
     });
+}
 
+function addPlayerTwoAttackListeners() {
+    const playerTwoGridBoxes = document.querySelectorAll(
+        ".player-two-board-container > .grid-box"
+    );
     const playerTwoBoard = getPlayerTwo().getBoard().getBoard();
     playerTwoBoard.forEach((xCoordinate) => {
         xCoordinate.forEach((yCoordinate) => {
@@ -61,6 +51,67 @@ function receiveDevice() {
             }
         });
     });
+}
+
+function removePlayerTwoAttackListeners() {
+    const playerTwoGridBoxes = document.querySelectorAll(
+        ".player-two-board-container > .grid-box"
+    );
+    const playerTwoBoard = getPlayerTwo().getBoard().getBoard();
+    playerTwoBoard.forEach((xCoordinate) => {
+        xCoordinate.forEach((yCoordinate) => {
+            if (yCoordinate[0] === "not hit") {
+                const coordinatesStr = [
+                    playerTwoBoard.indexOf(xCoordinate),
+                    xCoordinate.indexOf(yCoordinate),
+                ].join(",");
+                playerTwoGridBoxes.forEach((gridBox) => {
+                    if (gridBox.dataset.coordinates === coordinatesStr) {
+                        gridBox.removeEventListener("click", handleAttack);
+                    }
+                });
+            }
+        });
+    });
+}
+
+function addPlayerOneAttackListeners() {
+    const playerOneGridBoxes = document.querySelectorAll(
+        ".player-one-board-container > .grid-box"
+    );
+    const playerOneBoard = getPlayerOne().getBoard().getBoard();
+    playerOneBoard.forEach((xCoordinate) => {
+        xCoordinate.forEach((yCoordinate) => {
+            if (yCoordinate[0] === "not hit") {
+                const coordinatesStr = [
+                    playerOneBoard.indexOf(xCoordinate),
+                    xCoordinate.indexOf(yCoordinate),
+                ].join(",");
+                playerOneGridBoxes.forEach((gridBox) => {
+                    if (gridBox.dataset.coordinates === coordinatesStr) {
+                        gridBox.addEventListener("click", handleAttack);
+                    }
+                });
+            }
+        });
+    });
+}
+
+function receiveDevice() {
+    if (getPlayerTurn() === getPlayerOne()) {
+        removePlayerOneAttackListeners();
+        addPlayerTwoAttackListeners();
+        renderPlayerOneBoard();
+    }
+    if (getPlayerTurn() === getPlayerTwo()) {
+        removePlayerTwoAttackListeners();
+        addPlayerOneAttackListeners();
+        renderPlayerTwoBoard();
+    }
+    const receiveDeviceButton = document.querySelector(
+        ".receive-device-button"
+    );
+    receiveDeviceButton.remove();
 }
 
 export function insertReceiveDeviceButton() {

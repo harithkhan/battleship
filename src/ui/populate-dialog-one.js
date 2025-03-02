@@ -51,39 +51,65 @@ const submarineOne = document.querySelector(".submarine-one");
 const patrolBoatOne = document.querySelector(".patrol-boat-one");
 
 function rotateShips() {
+    const newCarrierOne = document.querySelector(".carrier-one");
+    const newBattleshipOne = document.querySelector(".battleship-one");
+    const newDestroyerOne = document.querySelector(".destroyer-one");
+    const newSubmarineOne = document.querySelector(".submarine-one");
+    const newPatrolBoatOne = document.querySelector(".patrol-boat-one");
+
     if (rotationState === "default") {
-        carrierOne.style.width = "3rem";
-        carrierOne.style.height = "15rem";
-        carrierOne.gridArea = "2 / 2 / 7 / 3";
-        battleshipOne.style.width = "3rem";
-        battleshipOne.style.height = "12rem";
-        battleshipOne.style.gridArea = "2 / 4 / 6 / 5";
-        destroyerOne.style.width = "3rem";
-        destroyerOne.style.height = "9rem";
-        destroyerOne.style.gridArea = "2 / 6 / 5 / 7";
-        submarineOne.style.width = "3rem";
-        submarineOne.style.height = "9rem";
-        submarineOne.style.gridArea = "7 / 4 / 10 / 5";
-        patrolBoatOne.style.width = "3rem";
-        patrolBoatOne.style.height = "6rem";
-        patrolBoatOne.style.gridArea = "6 / 6 / 8 / 7";
+        if (newCarrierOne) {
+            newCarrierOne.style.width = "3rem";
+            newCarrierOne.style.height = "15rem";
+            newCarrierOne.gridArea = "2 / 2 / 7 / 3";
+        }
+        if (newBattleshipOne) {
+            newBattleshipOne.style.width = "3rem";
+            newBattleshipOne.style.height = "12rem";
+            newBattleshipOne.style.gridArea = "2 / 4 / 6 / 5";
+        }
+        if (newDestroyerOne) {
+            newDestroyerOne.style.width = "3rem";
+            newDestroyerOne.style.height = "9rem";
+            newDestroyerOne.style.gridArea = "2 / 6 / 5 / 7";
+        }
+        if (newSubmarineOne) {
+            newSubmarineOne.style.width = "3rem";
+            newSubmarineOne.style.height = "9rem";
+            newSubmarineOne.style.gridArea = "7 / 4 / 10 / 5";
+        }
+        if (newPatrolBoatOne) {
+            newPatrolBoatOne.style.width = "3rem";
+            newPatrolBoatOne.style.height = "6rem";
+            newPatrolBoatOne.style.gridArea = "6 / 6 / 8 / 7";
+        }
         rotationState = "rotated";
     } else if (rotationState === "rotated") {
-        carrierOne.style.width = "15rem";
-        carrierOne.style.height = "3rem";
-        carrierOne.gridArea = "2 / 2 / 3 / 7";
-        battleshipOne.style.width = "12rem";
-        battleshipOne.style.height = "3rem";
-        battleshipOne.style.gridArea = "4 / 2 / 5 / 6";
-        destroyerOne.style.width = "9rem";
-        destroyerOne.style.height = "3rem";
-        destroyerOne.style.gridArea = "6 / 2 / 7 / 5";
-        submarineOne.style.width = "9rem";
-        submarineOne.style.height = "3rem";
-        submarineOne.style.gridArea = "8 / 2 / 9 / 5";
-        patrolBoatOne.style.width = "6rem";
-        patrolBoatOne.style.height = "3rem";
-        patrolBoatOne.style.gridArea = "9 / 5 / 10 / 7";
+        if (newCarrierOne) {
+            newCarrierOne.style.width = "15rem";
+            newCarrierOne.style.height = "3rem";
+            newCarrierOne.gridArea = "2 / 2 / 3 / 7";
+        }
+        if (newBattleshipOne) {
+            newBattleshipOne.style.width = "12rem";
+            newBattleshipOne.style.height = "3rem";
+            newBattleshipOne.style.gridArea = "4 / 2 / 5 / 6";
+        }
+        if (newDestroyerOne) {
+            newDestroyerOne.style.width = "9rem";
+            newDestroyerOne.style.height = "3rem";
+            newDestroyerOne.style.gridArea = "6 / 2 / 7 / 5";
+        }
+        if (newSubmarineOne) {
+            newSubmarineOne.style.width = "9rem";
+            newSubmarineOne.style.height = "3rem";
+            newSubmarineOne.style.gridArea = "8 / 2 / 9 / 5";
+        }
+        if (newPatrolBoatOne) {
+            newPatrolBoatOne.style.width = "6rem";
+            newPatrolBoatOne.style.height = "3rem";
+            newPatrolBoatOne.style.gridArea = "9 / 5 / 10 / 7";
+        }
         rotationState = "default";
     }
 }
@@ -105,30 +131,32 @@ function handlePlayClick() {
     }
 }
 
-export function populateDialogOne() {
-    playerOneDialog.showModal();
-    createPlayerOneBoard();
-    rotateButton.addEventListener("click", rotateShips);
-    randomButton.addEventListener("click", playerOneRandom);
-    resetButtonOne.addEventListener("click", handleResetOneClick);
-    playButton.addEventListener("click", handlePlayClick);
-}
-
 let draggedShip = null;
 
 export function resetDraggedShip() {
     draggedShip = null;
+    rotationState = "default";
 }
 
 export function setDraggedShip(event) {
     draggedShip = event.target.className;
 }
 
-carrierOne.addEventListener("dragstart", setDraggedShip);
-battleshipOne.addEventListener("dragstart", setDraggedShip);
-destroyerOne.addEventListener("dragstart", setDraggedShip);
-submarineOne.addEventListener("dragstart", setDraggedShip);
-patrolBoatOne.addEventListener("dragstart", setDraggedShip);
+export function populateDialogOne() {
+    playerOneDialog.showModal();
+    createPlayerOneBoard();
+
+    carrierOne.addEventListener("dragstart", setDraggedShip);
+    battleshipOne.addEventListener("dragstart", setDraggedShip);
+    destroyerOne.addEventListener("dragstart", setDraggedShip);
+    submarineOne.addEventListener("dragstart", setDraggedShip);
+    patrolBoatOne.addEventListener("dragstart", setDraggedShip);
+
+    rotateButton.addEventListener("click", rotateShips);
+    randomButton.addEventListener("click", playerOneRandom);
+    resetButtonOne.addEventListener("click", handleResetOneClick);
+    playButton.addEventListener("click", handlePlayClick);
+}
 
 export function handleShipDrop(event) {
     event.preventDefault();

@@ -5,6 +5,11 @@ import {
     renderPlayerOneDialogBoardMultiplayer,
     renderPlayerTwoDialogBoardMultiplayer,
 } from "./render.boards";
+import {
+    handleShipDrop,
+    resetDraggedShip,
+    setDraggedShip,
+} from "./populate-dialog-one";
 
 function checkAdjacentCoordinates(orientation, ship, player, x, y) {
     if (orientation === "x") {
@@ -389,4 +394,74 @@ export function playerTwoRandom() {
     if (patrolBoatTwo) {
         patrolBoatTwo.remove();
     }
+}
+
+export function handleResetOneClick() {
+    const shipsContainer = document.querySelector(
+        ".dialog-one-ships-container"
+    );
+    shipsContainer.innerHTML = "";
+    const gridBoxes = document.querySelectorAll(
+        ".player-one-dialog-board > .grid-box"
+    );
+    gridBoxes.forEach((i) => {
+        const gridBox = i;
+        gridBox.dataset.spaceState = "water";
+    });
+    gameController.getPlayerOne().getBoard().resetBoard();
+    gridBoxes.forEach((i) => {
+        const gridBox = i;
+        gridBox.addEventListener("dragover", (event) => {
+            event.preventDefault(); // To allow dropping
+        });
+        gridBox.addEventListener("drop", (event) => {
+            event.preventDefault();
+            // eslint-disable-next-line no-use-before-define
+            handleShipDrop(event);
+        });
+    });
+
+    const newCarrierOne = document.createElement("div");
+    newCarrierOne.className = "carrier-one";
+    newCarrierOne.draggable = "true";
+
+    const newBattleshipOne = document.createElement("div");
+    newBattleshipOne.className = "battleship-one";
+    newBattleshipOne.draggable = "true";
+
+    const newDestroyerOne = document.createElement("div");
+    newDestroyerOne.className = "destroyer-one";
+    newDestroyerOne.draggable = "true";
+
+    const newSubmarineOne = document.createElement("div");
+    newSubmarineOne.className = "submarine-one";
+    newSubmarineOne.draggable = "true";
+
+    const newPatrolBoatOne = document.createElement("div");
+    newPatrolBoatOne.className = "patrol-boat-one";
+    newPatrolBoatOne.draggable = "true";
+
+    if (newCarrierOne) {
+        newCarrierOne.addEventListener("dragstart", setDraggedShip);
+    }
+    if (newBattleshipOne) {
+        newBattleshipOne.addEventListener("dragstart", setDraggedShip);
+    }
+    if (newDestroyerOne) {
+        newDestroyerOne.addEventListener("dragstart", setDraggedShip);
+    }
+    if (newSubmarineOne) {
+        newSubmarineOne.addEventListener("dragstart", setDraggedShip);
+    }
+    if (newPatrolBoatOne) {
+        newPatrolBoatOne.addEventListener("dragstart", setDraggedShip);
+    }
+
+    shipsContainer.appendChild(newCarrierOne);
+    shipsContainer.appendChild(newBattleshipOne);
+    shipsContainer.appendChild(newDestroyerOne);
+    shipsContainer.appendChild(newSubmarineOne);
+    shipsContainer.appendChild(newPatrolBoatOne);
+
+    resetDraggedShip();
 }

@@ -7,7 +7,11 @@ import {
     renderPlayerOneDialogBoard,
     renderComputerBoard,
 } from "./render.boards";
-import { assignComputerShips, playerOneRandom } from "./ships-assignment";
+import {
+    assignComputerShips,
+    handleResetOneClick,
+    playerOneRandom,
+} from "./ships-assignment";
 
 const playerOneDialog = document.querySelector(".place-ships-one");
 const playerOneBoard = document.querySelector(".player-one-dialog-board");
@@ -86,6 +90,7 @@ function rotateShips() {
 
 const playButton = document.querySelector(".play-button-one");
 const randomButton = document.querySelector(".random-button");
+const resetButtonOne = document.querySelector(".reset-button-one");
 const shipsContainer = document.querySelector(".dialog-one-ships-container");
 
 function handlePlayClick() {
@@ -105,12 +110,17 @@ export function populateDialogOne() {
     createPlayerOneBoard();
     rotateButton.addEventListener("click", rotateShips);
     randomButton.addEventListener("click", playerOneRandom);
+    resetButtonOne.addEventListener("click", handleResetOneClick);
     playButton.addEventListener("click", handlePlayClick);
 }
 
 let draggedShip = null;
 
-function setDraggedShip(event) {
+export function resetDraggedShip() {
+    draggedShip = null;
+}
+
+export function setDraggedShip(event) {
     draggedShip = event.target.className;
 }
 
@@ -120,8 +130,30 @@ destroyerOne.addEventListener("dragstart", setDraggedShip);
 submarineOne.addEventListener("dragstart", setDraggedShip);
 patrolBoatOne.addEventListener("dragstart", setDraggedShip);
 
-function handleShipDrop(event) {
+export function handleShipDrop(event) {
     event.preventDefault();
+
+    const newCarrierOne = document.querySelector(".carrier-one");
+    const newBattleshipOne = document.querySelector(".battleship-one");
+    const newDestroyerOne = document.querySelector(".destroyer-one");
+    const newSubmarineOne = document.querySelector(".submarine-one");
+    const newPatrolBoatOne = document.querySelector(".patrol-boat-one");
+
+    if (newCarrierOne) {
+        newCarrierOne.addEventListener("dragstart", setDraggedShip);
+    }
+    if (newBattleshipOne) {
+        newBattleshipOne.addEventListener("dragstart", setDraggedShip);
+    }
+    if (newDestroyerOne) {
+        newDestroyerOne.addEventListener("dragstart", setDraggedShip);
+    }
+    if (newSubmarineOne) {
+        newSubmarineOne.addEventListener("dragstart", setDraggedShip);
+    }
+    if (newPatrolBoatOne) {
+        newPatrolBoatOne.addEventListener("dragstart", setDraggedShip);
+    }
     const dropCoordinatesStr = event.target.dataset.coordinates;
     const dropCoordinatesArrStr = dropCoordinatesStr.split(",");
     const dropCoordinatesArr = [
@@ -143,7 +175,7 @@ function handleShipDrop(event) {
                 dropCoordinatesArr[1],
                 "x"
             );
-        carrierOne.remove();
+        newCarrierOne.remove();
     }
     if (
         draggedShip === "carrier-one" &&
@@ -159,7 +191,7 @@ function handleShipDrop(event) {
                 dropCoordinatesArr[1],
                 "y"
             );
-        carrierOne.remove();
+        newCarrierOne.remove();
     }
     if (
         draggedShip === "battleship-one" &&
@@ -175,7 +207,7 @@ function handleShipDrop(event) {
                 dropCoordinatesArr[1],
                 "x"
             );
-        battleshipOne.remove();
+        newBattleshipOne.remove();
     }
     if (
         draggedShip === "battleship-one" &&
@@ -191,7 +223,7 @@ function handleShipDrop(event) {
                 dropCoordinatesArr[1],
                 "y"
             );
-        battleshipOne.remove();
+        newBattleshipOne.remove();
     }
     if (
         draggedShip === "destroyer-one" &&
@@ -207,7 +239,7 @@ function handleShipDrop(event) {
                 dropCoordinatesArr[1],
                 "x"
             );
-        destroyerOne.remove();
+        newDestroyerOne.remove();
     }
     if (
         draggedShip === "destroyer-one" &&
@@ -223,7 +255,7 @@ function handleShipDrop(event) {
                 dropCoordinatesArr[1],
                 "y"
             );
-        destroyerOne.remove();
+        newDestroyerOne.remove();
     }
     if (
         draggedShip === "submarine-one" &&
@@ -239,7 +271,7 @@ function handleShipDrop(event) {
                 dropCoordinatesArr[1],
                 "x"
             );
-        submarineOne.remove();
+        newSubmarineOne.remove();
     }
     if (
         draggedShip === "submarine-one" &&
@@ -255,7 +287,7 @@ function handleShipDrop(event) {
                 dropCoordinatesArr[1],
                 "y"
             );
-        submarineOne.remove();
+        newSubmarineOne.remove();
     }
     if (
         draggedShip === "patrol-boat-one" &&
@@ -271,7 +303,7 @@ function handleShipDrop(event) {
                 dropCoordinatesArr[1],
                 "x"
             );
-        patrolBoatOne.remove();
+        newPatrolBoatOne.remove();
     }
     if (
         draggedShip === "patrol-boat-one" &&
@@ -287,7 +319,7 @@ function handleShipDrop(event) {
                 dropCoordinatesArr[1],
                 "y"
             );
-        patrolBoatOne.remove();
+        newPatrolBoatOne.remove();
     }
     renderPlayerOneBoard();
     renderPlayerOneDialogBoard();

@@ -44,11 +44,6 @@ function createPlayerOneBoard() {
 }
 
 let rotationState = "default";
-const carrierOne = document.querySelector(".carrier-one");
-const battleshipOne = document.querySelector(".battleship-one");
-const destroyerOne = document.querySelector(".destroyer-one");
-const submarineOne = document.querySelector(".submarine-one");
-const patrolBoatOne = document.querySelector(".patrol-boat-one");
 
 function rotateShips() {
     const newCarrierOne = document.querySelector(".carrier-one");
@@ -145,6 +140,26 @@ export function setDraggedShip(event) {
 export function populateDialogOne() {
     playerOneDialog.showModal();
     createPlayerOneBoard();
+
+    shipsContainer.innerHTML = "";
+
+    const carrierOne = document.createElement("div");
+    const battleshipOne = document.createElement("div");
+    const destroyerOne = document.createElement("div");
+    const submarineOne = document.createElement("div");
+    const patrolBoatOne = document.createElement("div");
+
+    carrierOne.className = "carrier-one";
+    battleshipOne.className = "battleship-one";
+    destroyerOne.className = "destroyer-one";
+    submarineOne.className = "submarine-one";
+    patrolBoatOne.className = "patrol-boat-one";
+
+    shipsContainer.appendChild(carrierOne);
+    shipsContainer.appendChild(battleshipOne);
+    shipsContainer.appendChild(destroyerOne);
+    shipsContainer.appendChild(submarineOne);
+    shipsContainer.appendChild(patrolBoatOne);
 
     carrierOne.addEventListener("dragstart", setDraggedShip);
     battleshipOne.addEventListener("dragstart", setDraggedShip);

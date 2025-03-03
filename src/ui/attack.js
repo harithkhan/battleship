@@ -12,6 +12,8 @@ import {
 } from "../logic/game-controller";
 import { hideShips } from "./hide-ships";
 import { renderPlayerOneBoard, renderPlayerTwoBoard } from "./render.boards";
+import { attachMainMenuButtonIfGameOver } from "./restart";
+import { resetAllShips } from "../logic/ships";
 
 function attack(player, coordinates) {
     const attackedBox =
@@ -64,9 +66,15 @@ function attack(player, coordinates) {
     // Check if game over
     if (getPlayerTurn().getBoard().isGameOver()) {
         const passDeviceButton = document.querySelector(".pass-device-button");
-        passDeviceButton.remove();
+        if (passDeviceButton) {
+            passDeviceButton.remove();
+        }
         setGameWinner(getOtherPlayer());
+        getPlayerOne().getBoard().resetBoard();
+        getPlayerTwo().getBoard().resetBoard();
+        resetAllShips();
         displayGameOver();
+        attachMainMenuButtonIfGameOver();
         resetGameState();
     }
 }

@@ -14,12 +14,16 @@ export const createShip = (name, length = 1) => {
         }
         return false;
     };
+    const resetHits = () => {
+        hits = 0;
+    };
     return {
         getName,
         getLength,
         getHits,
         hit,
         checkSunk,
+        resetHits,
     };
 };
 
@@ -37,4 +41,17 @@ export const playerTwoShips = {
     destroyer: createShip("destroyerTwo", 3),
     submarine: createShip("submarineOneTwo", 3),
     patrolBoat: createShip("patrolBoatTwo", 2),
+};
+
+export const resetAllShips = () => {
+    playerOneShips.carrier.resetHits();
+    playerOneShips.battleship.resetHits();
+    playerOneShips.destroyer.resetHits();
+    playerOneShips.submarine.resetHits();
+    playerOneShips.patrolBoat.resetHits();
+    playerTwoShips.carrier.resetHits();
+    playerTwoShips.battleship.resetHits();
+    playerTwoShips.destroyer.resetHits();
+    playerTwoShips.submarine.resetHits();
+    playerTwoShips.patrolBoat.resetHits();
 };

@@ -69,6 +69,9 @@ export const gameboard = () => {
     const isGameOver = () => {
         let status = true;
         const shipValues = Object.values(ships);
+        if (shipValues.length === 0) {
+            status = false;
+        }
         shipValues.forEach((ship) => {
             if (!ship.checkSunk()) {
                 status = false;

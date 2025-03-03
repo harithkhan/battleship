@@ -1,3 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+
+@font-face {
+    font-family: "OCR A Extended";
+    src: url(./fonts/OCRAEXT.TTF);
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Impact";
+    src: url(./fonts/impact.woff);
+    font-weight: normal;
+    font-style: normal;
+}
+
 /* CSS Reset */
 *,
 *::before,

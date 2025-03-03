@@ -63,8 +63,9 @@ function attack(player, coordinates) {
     }
     // Check if game over
     if (getPlayerTurn().getBoard().isGameOver()) {
+        const passDeviceButton = document.querySelector(".pass-device-button");
+        passDeviceButton.remove();
         setGameWinner(getOtherPlayer());
-        refreshWhoCanAttack();
         displayGameOver();
         resetGameState();
     }

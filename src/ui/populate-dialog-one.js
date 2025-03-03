@@ -155,6 +155,12 @@ export function populateDialogOne() {
     submarineOne.className = "submarine-one";
     patrolBoatOne.className = "patrol-boat-one";
 
+    carrierOne.draggable = "true";
+    battleshipOne.draggable = "true";
+    destroyerOne.draggable = "true";
+    submarineOne.draggable = "true";
+    patrolBoatOne.draggable = "true";
+
     shipsContainer.appendChild(carrierOne);
     shipsContainer.appendChild(battleshipOne);
     shipsContainer.appendChild(destroyerOne);

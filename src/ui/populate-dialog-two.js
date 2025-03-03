@@ -123,19 +123,21 @@ function rotateShips() {
 const randomButton = document.querySelector(".random-button-two");
 const resetButtonTwo = document.querySelector(".reset-button-two");
 const shipsContainer = document.querySelector(".dialog-two-ships-container");
-const placeButton = document.querySelector(".place-button-two");
 
 function handlePlayClick() {
     if (
         shipsContainer.childElementCount === 0 &&
         placementTurn === "player-two"
     ) {
+        const playButton = document.querySelector(".play-button-two");
+        playButton.remove();
         renderPlayerTwoBoard();
         renderPlayerOneBoard();
         hideShips(getPlayerTwo());
         gameStart();
         displayPlayerTurn();
         refreshWhoCanAttack();
+        placementTurn = "player-one";
         dialogTwo.close();
     }
 }
@@ -720,12 +722,13 @@ function handlePlaceClick() {
         shipsContainer.appendChild(newPatrolBoatTwo);
 
         placementTurn = "player-two";
+        const placeButton = document.querySelector(".place-button-two");
         placeButton.remove();
 
         const playButton = document.createElement("button");
         playButton.type = "button";
         playButton.textContent = "Play!";
-        placeButton.className = ".play-button-two";
+        playButton.className = "play-button-two";
         playButton.addEventListener("click", handlePlayClick);
         const buttonsContainer = document.querySelector(
             ".dialog-two-buttons-container"
@@ -743,10 +746,52 @@ function handlePlaceClick() {
 }
 
 export function populateDialogTwo() {
+    placementTurn = "player-one";
     dialogTwo.showModal();
     createPlayerOneBoard();
+
+    shipsContainer.innerHTML = "";
+    const newCarrierTwo = document.createElement("div");
+    const newBattleshipTwo = document.createElement("div");
+    const newDestroyerTwo = document.createElement("div");
+    const newSubmarineTwo = document.createElement("div");
+    const newPatrolBoatTwo = document.createElement("div");
+
+    newCarrierTwo.className = "carrier-two";
+    newBattleshipTwo.className = "battleship-two";
+    newDestroyerTwo.className = "destroyer-two";
+    newSubmarineTwo.className = "submarine-two";
+    newPatrolBoatTwo.className = "patrol-boat-two";
+
+    newCarrierTwo.draggable = true;
+    newBattleshipTwo.draggable = true;
+    newDestroyerTwo.draggable = true;
+    newSubmarineTwo.draggable = true;
+    newPatrolBoatTwo.draggable = true;
+
+    shipsContainer.appendChild(newCarrierTwo);
+    shipsContainer.appendChild(newBattleshipTwo);
+    shipsContainer.appendChild(newDestroyerTwo);
+    shipsContainer.appendChild(newSubmarineTwo);
+    shipsContainer.appendChild(newPatrolBoatTwo);
+
+    newCarrierTwo.addEventListener("dragstart", setDraggedShip);
+    newBattleshipTwo.addEventListener("dragstart", setDraggedShip);
+    newDestroyerTwo.addEventListener("dragstart", setDraggedShip);
+    newSubmarineTwo.addEventListener("dragstart", setDraggedShip);
+    newPatrolBoatTwo.addEventListener("dragstart", setDraggedShip);
+
     rotateButton.addEventListener("click", rotateShips);
     randomButton.addEventListener("click", playerOneRandom);
     resetButtonTwo.addEventListener("click", handleResetTwoPlayerOneClick);
-    placeButton.addEventListener("click", handlePlaceClick);
+
+    const newPlaceButton = document.createElement("button");
+    newPlaceButton.className = "place-button-two";
+    newPlaceButton.textContent = "Place";
+    newPlaceButton.type = "button";
+    const buttonsContainer = document.querySelector(
+        ".dialog-two-buttons-container"
+    );
+    buttonsContainer.appendChild(newPlaceButton);
+    newPlaceButton.addEventListener("click", handlePlaceClick);
 }

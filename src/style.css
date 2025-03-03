@@ -74,6 +74,12 @@ h6 {
 }
 /* Reset Ends */
 
+:root {
+    --font-default: #33fd33;
+    --bg: #062306;
+    --bg-dark: #041604;
+}
+
 body {
     width: 100%;
     min-width: 60rem;
@@ -86,22 +92,74 @@ body {
 
 /* Start Dialog Page */
 .start-game-dialog {
-    width: 30rem;
-    height: 20rem;
-    border: 1px solid black;
+    width: 46rem;
+    min-height: 22rem;
+    padding-bottom: 5rem;
+    border: 1px solid var(--font-default);
+    border-radius: 4px;
     position: fixed;
     top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-color: var(--bg);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .start-game-dialog::backdrop {
-    background-color: white;
+    background-color: var(--bg);
     opacity: 1;
 }
 
 .dialog-one-header {
     font-family: "Black Ops One";
+    color: var(--font-default);
+    font-size: 4rem;
+}
+
+/* Game Form Styling */
+.game-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.form-header {
+    color: var(--font-default);
+}
+
+.radio-label {
+    color: var(--font-default);
+}
+
+.radio-buttons {
+    border: 1px solid var(--font-default);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #555;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+
+#single-player:checked,
+#two-player:checked {
+    background-color: var(--font-default);
 }
 
 /* Place Ships One Dialog */

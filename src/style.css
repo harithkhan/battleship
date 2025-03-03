@@ -81,6 +81,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: "OCR A Extended", "Impact", Arial, Helvetica, sans-serif;
 }
 
 /* Start Dialog Page */
@@ -97,6 +98,10 @@ body {
 .start-game-dialog::backdrop {
     background-color: white;
     opacity: 1;
+}
+
+.dialog-one-header {
+    font-family: "Black Ops One";
 }
 
 /* Place Ships One Dialog */

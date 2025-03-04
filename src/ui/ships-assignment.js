@@ -650,6 +650,12 @@ export function handleResetOneClick() {
     newPatrolBoatOne.className = "patrol-boat-one";
     newPatrolBoatOne.draggable = "true";
 
+    newCarrierOne.textContent = "Carrier";
+    newBattleshipOne.textContent = "Battleship";
+    newDestroyerOne.textContent = "Destroyer";
+    newSubmarineOne.textContent = "Submarine";
+    newPatrolBoatOne.textContent = "Patrol Boat";
+
     if (newCarrierOne) {
         newCarrierOne.addEventListener("dragstart", setDraggedShip);
     }

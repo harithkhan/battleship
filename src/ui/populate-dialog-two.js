@@ -186,22 +186,27 @@ function handleResetTwoPlayerOneClick() {
     const newCarrierTwo = document.createElement("div");
     newCarrierTwo.className = "carrier-two";
     newCarrierTwo.draggable = "true";
+    newCarrierTwo.textContent = "Carrier";
 
     const newBattleshipTwo = document.createElement("div");
     newBattleshipTwo.className = "battleship-two";
     newBattleshipTwo.draggable = "true";
+    newBattleshipTwo.textContent = "Battleship";
 
     const newDestroyerTwo = document.createElement("div");
     newDestroyerTwo.className = "destroyer-two";
     newDestroyerTwo.draggable = "true";
+    newDestroyerTwo.textContent = "Destroyer";
 
     const newSubmarineTwo = document.createElement("div");
     newSubmarineTwo.className = "submarine-two";
     newSubmarineTwo.draggable = "true";
+    newSubmarineTwo.textContent = "Submarine";
 
     const newPatrolBoatTwo = document.createElement("div");
     newPatrolBoatTwo.className = "patrol-boat-two";
     newPatrolBoatTwo.draggable = "true";
+    newPatrolBoatTwo.textContent = "Patrol Boat";
 
     if (newCarrierTwo) {
         newCarrierTwo.addEventListener("dragstart", setDraggedShip);
@@ -281,22 +286,27 @@ function handleResetTwoPlayerTwoClick() {
     const newCarrierTwo = document.createElement("div");
     newCarrierTwo.className = "carrier-two";
     newCarrierTwo.draggable = "true";
+    newCarrierTwo.textContent = "Carrier";
 
     const newBattleshipTwo = document.createElement("div");
     newBattleshipTwo.className = "battleship-two";
     newBattleshipTwo.draggable = "true";
+    newBattleshipTwo.textContent = "Battleship";
 
     const newDestroyerTwo = document.createElement("div");
     newDestroyerTwo.className = "destroyer-two";
     newDestroyerTwo.draggable = "true";
+    newDestroyerTwo.textContent = "Destroyer";
 
     const newSubmarineTwo = document.createElement("div");
     newSubmarineTwo.className = "submarine-two";
     newSubmarineTwo.draggable = "true";
+    newSubmarineTwo.textContent = "Submarine";
 
     const newPatrolBoatTwo = document.createElement("div");
     newPatrolBoatTwo.className = "patrol-boat-two";
     newPatrolBoatTwo.draggable = "true";
+    newPatrolBoatTwo.textContent = "Patrol Boat";
 
     if (newCarrierTwo) {
         newCarrierTwo.addEventListener("dragstart", setDraggedShip);

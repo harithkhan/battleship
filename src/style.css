@@ -295,13 +295,12 @@ input[type="radio"] {
 .carrier-one {
     width: 15rem;
     height: 3rem;
-    border: 1px solid black;
     background-color: var(--font-default);
     grid-area: 2 / 2 / 3 / 7;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: 1.2rem;
     line-height: 1;
     word-wrap: break-word;
     overflow-wrap:break-word;
@@ -311,13 +310,12 @@ input[type="radio"] {
 .battleship-one {
     width: 12rem;
     height: 3rem;
-    border: 1px solid black;
     background-color: var(--font-default);
     grid-area: 4 / 2 / 5 / 6;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: 1.2rem;
     line-height: 1;
     word-wrap: break-word;
     overflow-wrap:break-word;
@@ -327,13 +325,12 @@ input[type="radio"] {
 .destroyer-one {
     width: 9rem;
     height: 3rem;
-    border: 1px solid black;
     background-color: var(--font-default);
     grid-area: 6 / 2 / 7 / 5;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: 1.2rem;
     line-height: 1;
     word-wrap: break-word;
     overflow-wrap:break-word;
@@ -343,13 +340,12 @@ input[type="radio"] {
 .submarine-one {
     width: 9rem;
     height: 3rem;
-    border: 1px solid black;
     background-color: var(--font-default);
     grid-area: 8 / 2 / 9 / 5;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: 1.2rem;
     line-height: 1;
     word-wrap: break-word;
     overflow-wrap:break-word;
@@ -359,7 +355,6 @@ input[type="radio"] {
 .patrol-boat-one {
     width: 6rem;
     height: 3rem;
-    border: 1px solid black;
     background-color: var(--font-default);
     grid-area: 9 / 5 / 10 / 7;
     display: flex;
@@ -426,13 +421,12 @@ input[type="radio"] {
 .carrier-two {
     width: 15rem;
     height: 3rem;
-    border: 1px solid black;
     background-color: var(--font-default);
     grid-area: 2 / 2 / 3 / 7;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: 1.2rem;
     line-height: 1;
     word-wrap: break-word;
     overflow-wrap:break-word;
@@ -442,13 +436,12 @@ input[type="radio"] {
 .battleship-two {
     width: 12rem;
     height: 3rem;
-    border: 1px solid black;
     background-color: var(--font-default);
     grid-area: 4 / 2 / 5 / 6;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: 1.2rem;
     line-height: 1;
     word-wrap: break-word;
     overflow-wrap:break-word;
@@ -458,13 +451,12 @@ input[type="radio"] {
 .destroyer-two {
     width: 9rem;
     height: 3rem;
-    border: 1px solid black;
     background-color: var(--font-default);
     grid-area: 6 / 2 / 7 / 5;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: 1.2rem;
     line-height: 1;
     word-wrap: break-word;
     overflow-wrap:break-word;
@@ -474,13 +466,12 @@ input[type="radio"] {
 .submarine-two {
     width: 9rem;
     height: 3rem;
-    border: 1px solid black;
     background-color: var(--font-default);
     grid-area: 8 / 2 / 9 / 5;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding: 1.2rem;
     line-height: 1;
     word-wrap: break-word;
     overflow-wrap:break-word;
@@ -490,7 +481,6 @@ input[type="radio"] {
 .patrol-boat-two {
     width: 6rem;
     height: 3rem;
-    border: 1px solid black;
     background-color: var(--font-default);
     grid-area: 9 / 5 / 10 / 7;
     display: flex;

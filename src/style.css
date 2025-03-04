@@ -213,6 +213,7 @@ input[type="radio"] {
     flex-direction: column;
     align-items: center;
     padding: 0;
+    background-color: var(--bg);
 }
 
 .place-ships-one:not([open]) {
@@ -258,7 +259,7 @@ input[type="radio"] {
     width: 15rem;
     height: 3rem;
     border: 1px solid black;
-    background-color: green;
+    background-color: var(--font-default);
     grid-area: 2 / 2 / 3 / 7;
 }
 
@@ -266,7 +267,7 @@ input[type="radio"] {
     width: 12rem;
     height: 3rem;
     border: 1px solid black;
-    background-color: green;
+    background-color: var(--font-default);
     grid-area: 4 / 2 / 5 / 6;
 }
 
@@ -274,7 +275,7 @@ input[type="radio"] {
     width: 9rem;
     height: 3rem;
     border: 1px solid black;
-    background-color: green;
+    background-color: var(--font-default);
     grid-area: 6 / 2 / 7 / 5;
 }
 
@@ -282,7 +283,7 @@ input[type="radio"] {
     width: 9rem;
     height: 3rem;
     border: 1px solid black;
-    background-color: green;
+    background-color: var(--font-default);
     grid-area: 8 / 2 / 9 / 5;
 }
 
@@ -290,7 +291,7 @@ input[type="radio"] {
     width: 6rem;
     height: 3rem;
     border: 1px solid black;
-    background-color: green;
+    background-color: var(--font-default);
     grid-area: 9 / 5 / 10 / 7;
 }
 
@@ -349,7 +350,7 @@ input[type="radio"] {
     width: 15rem;
     height: 3rem;
     border: 1px solid black;
-    background-color: green;
+    background-color: var(--font-default);
     grid-area: 2 / 2 / 3 / 7;
 }
 
@@ -357,7 +358,7 @@ input[type="radio"] {
     width: 12rem;
     height: 3rem;
     border: 1px solid black;
-    background-color: green;
+    background-color: var(--font-default);
     grid-area: 4 / 2 / 5 / 6;
 }
 
@@ -365,7 +366,7 @@ input[type="radio"] {
     width: 9rem;
     height: 3rem;
     border: 1px solid black;
-    background-color: green;
+    background-color: var(--font-default);
     grid-area: 6 / 2 / 7 / 5;
 }
 
@@ -373,7 +374,7 @@ input[type="radio"] {
     width: 9rem;
     height: 3rem;
     border: 1px solid black;
-    background-color: green;
+    background-color: var(--font-default);
     grid-area: 8 / 2 / 9 / 5;
 }
 
@@ -381,7 +382,7 @@ input[type="radio"] {
     width: 6rem;
     height: 3rem;
     border: 1px solid black;
-    background-color: green;
+    background-color: var(--font-default);
     grid-area: 9 / 5 / 10 / 7;
 }
 
@@ -414,25 +415,25 @@ input[type="radio"] {
 }
 
 [data-space-state="water"] {
-    background-color: aqua;
+    background-color: var(--green);
 }
 
 [data-space-state="water"][data-hit-status="miss"] {
-    background-color: gray;
+    background-color: var(--grey);
 }
 
 [data-space-state="ship"] {
-    background-color: green;
+    background-color: var(--font-default);
 }
 
 [data-space-state="ship"][data-hit-status="hit"] {
-    background-color: red;
+    background-color: var(--red);
 }
 
 [data-space-state="hidden-ship"] {
-    background-color: aqua;
+    background-color: var(--green);
 }
 
 [data-space-state="hidden-ship"][data-hit-status="hit"] {
-    background-color: red;
+    background-color: var(--red);
 }

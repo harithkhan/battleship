@@ -298,6 +298,14 @@ input[type="radio"] {
     border: 1px solid black;
     background-color: var(--font-default);
     grid-area: 2 / 2 / 3 / 7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    line-height: 1;
+    word-wrap: break-word;
+    overflow-wrap:break-word;
+    word-break: break-word;
 }
 
 .battleship-one {
@@ -306,6 +314,14 @@ input[type="radio"] {
     border: 1px solid black;
     background-color: var(--font-default);
     grid-area: 4 / 2 / 5 / 6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    line-height: 1;
+    word-wrap: break-word;
+    overflow-wrap:break-word;
+    word-break: break-word;
 }
 
 .destroyer-one {
@@ -314,6 +330,14 @@ input[type="radio"] {
     border: 1px solid black;
     background-color: var(--font-default);
     grid-area: 6 / 2 / 7 / 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    line-height: 1;
+    word-wrap: break-word;
+    overflow-wrap:break-word;
+    word-break: break-word;
 }
 
 .submarine-one {
@@ -322,6 +346,14 @@ input[type="radio"] {
     border: 1px solid black;
     background-color: var(--font-default);
     grid-area: 8 / 2 / 9 / 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    line-height: 1;
+    word-wrap: break-word;
+    overflow-wrap:break-word;
+    word-break: break-word;
 }
 
 .patrol-boat-one {
@@ -330,6 +362,14 @@ input[type="radio"] {
     border: 1px solid black;
     background-color: var(--font-default);
     grid-area: 9 / 5 / 10 / 7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    line-height: 1;
+    word-wrap: break-word;
+    overflow-wrap:break-word;
+    word-break: break-word;
 }
 
 /* Place Ships Two Dialog */
@@ -389,6 +429,14 @@ input[type="radio"] {
     border: 1px solid black;
     background-color: var(--font-default);
     grid-area: 2 / 2 / 3 / 7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    line-height: 1;
+    word-wrap: break-word;
+    overflow-wrap:break-word;
+    word-break: break-word;
 }
 
 .battleship-two {
@@ -397,6 +445,14 @@ input[type="radio"] {
     border: 1px solid black;
     background-color: var(--font-default);
     grid-area: 4 / 2 / 5 / 6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    line-height: 1;
+    word-wrap: break-word;
+    overflow-wrap:break-word;
+    word-break: break-word;
 }
 
 .destroyer-two {
@@ -405,6 +461,14 @@ input[type="radio"] {
     border: 1px solid black;
     background-color: var(--font-default);
     grid-area: 6 / 2 / 7 / 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    line-height: 1;
+    word-wrap: break-word;
+    overflow-wrap:break-word;
+    word-break: break-word;
 }
 
 .submarine-two {
@@ -413,6 +477,14 @@ input[type="radio"] {
     border: 1px solid black;
     background-color: var(--font-default);
     grid-area: 8 / 2 / 9 / 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    line-height: 1;
+    word-wrap: break-word;
+    overflow-wrap:break-word;
+    word-break: break-word;
 }
 
 .patrol-boat-two {
@@ -421,6 +493,14 @@ input[type="radio"] {
     border: 1px solid black;
     background-color: var(--font-default);
     grid-area: 9 / 5 / 10 / 7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    line-height: 1;
+    word-wrap: break-word;
+    overflow-wrap:break-word;
+    word-break: break-word;
 }
 
 /* Main Game Display */

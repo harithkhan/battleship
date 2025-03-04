@@ -79,16 +79,19 @@ function rotateShips() {
             newDestroyerTwo.style.width = "3rem";
             newDestroyerTwo.style.height = "9rem";
             newDestroyerTwo.style.gridArea = "2 / 6 / 5 / 7";
+            newDestroyerTwo.style.fontSize = "0.8rem";
         }
         if (newSubmarineTwo) {
             newSubmarineTwo.style.width = "3rem";
             newSubmarineTwo.style.height = "9rem";
             newSubmarineTwo.style.gridArea = "7 / 4 / 10 / 5";
+            newSubmarineTwo.style.fontSize = "0.8rem";
         }
         if (newPatrolBoatTwo) {
             newPatrolBoatTwo.style.width = "3rem";
             newPatrolBoatTwo.style.height = "6rem";
             newPatrolBoatTwo.style.gridArea = "6 / 6 / 8 / 7";
+            newPatrolBoatTwo.textContent = "Boat";
         }
         rotationState = "rotated";
     } else if (rotationState === "rotated") {
@@ -106,16 +109,19 @@ function rotateShips() {
             newDestroyerTwo.style.width = "9rem";
             newDestroyerTwo.style.height = "3rem";
             newDestroyerTwo.style.gridArea = "6 / 2 / 7 / 5";
+            newDestroyerTwo.style.fontSize = "1rem";
         }
         if (newSubmarineTwo) {
             newSubmarineTwo.style.width = "9rem";
             newSubmarineTwo.style.height = "3rem";
             newSubmarineTwo.style.gridArea = "8 / 2 / 9 / 5";
+            newSubmarineTwo.style.fontSize = "1rem";
         }
         if (newPatrolBoatTwo) {
             newPatrolBoatTwo.style.width = "6rem";
             newPatrolBoatTwo.style.height = "3rem";
             newPatrolBoatTwo.style.gridArea = "9 / 5 / 10 / 7";
+            newPatrolBoatTwo.textContent = "Patrol Boat";
         }
         rotationState = "default";
     }
@@ -712,6 +718,12 @@ function handlePlaceClick() {
         randomButton.removeEventListener("click", playerOneRandom);
         randomButton.addEventListener("click", playerTwoRandom);
 
+        newCarrierTwo.textContent = "Carrier";
+        newBattleshipTwo.textContent = "Battleship";
+        newDestroyerTwo.textContent = "Destroyer";
+        newSubmarineTwo.textContent = "Submarine";
+        newPatrolBoatTwo.textContent = "Patrol Boat";
+
         newCarrierTwo.addEventListener("dragstart", setDraggedShip);
         newBattleshipTwo.addEventListener("dragstart", setDraggedShip);
         newDestroyerTwo.addEventListener("dragstart", setDraggedShip);
@@ -765,6 +777,12 @@ export function populateDialogTwo() {
     newDestroyerTwo.className = "destroyer-two";
     newSubmarineTwo.className = "submarine-two";
     newPatrolBoatTwo.className = "patrol-boat-two";
+
+    newCarrierTwo.textContent = "Carrier";
+    newBattleshipTwo.textContent = "Battleship";
+    newDestroyerTwo.textContent = "Destroyer";
+    newSubmarineTwo.textContent = "Submarine";
+    newPatrolBoatTwo.textContent = "Patrol Boat";
 
     newCarrierTwo.draggable = true;
     newBattleshipTwo.draggable = true;

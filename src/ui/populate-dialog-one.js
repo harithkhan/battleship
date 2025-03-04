@@ -64,16 +64,19 @@ function rotateShips() {
             newDestroyerOne.style.width = "3rem";
             newDestroyerOne.style.height = "9rem";
             newDestroyerOne.style.gridArea = "2 / 6 / 5 / 7";
+            newDestroyerOne.style.fontSize = "0.8rem";
         }
         if (newSubmarineOne) {
             newSubmarineOne.style.width = "3rem";
             newSubmarineOne.style.height = "9rem";
             newSubmarineOne.style.gridArea = "7 / 4 / 10 / 5";
+            newSubmarineOne.style.fontSize = "0.8rem";
         }
         if (newPatrolBoatOne) {
             newPatrolBoatOne.style.width = "3rem";
             newPatrolBoatOne.style.height = "6rem";
             newPatrolBoatOne.style.gridArea = "6 / 6 / 8 / 7";
+            newPatrolBoatOne.textContent = "Boat";
         }
         setRotationState("rotated");
     } else if (getRotationState() === "rotated") {
@@ -91,16 +94,19 @@ function rotateShips() {
             newDestroyerOne.style.width = "9rem";
             newDestroyerOne.style.height = "3rem";
             newDestroyerOne.style.gridArea = "6 / 2 / 7 / 5";
+            newDestroyerOne.style.fontSize = "1rem";
         }
         if (newSubmarineOne) {
             newSubmarineOne.style.width = "9rem";
             newSubmarineOne.style.height = "3rem";
             newSubmarineOne.style.gridArea = "8 / 2 / 9 / 5";
+            newSubmarineOne.style.fontSize = "1rem";
         }
         if (newPatrolBoatOne) {
             newPatrolBoatOne.style.width = "6rem";
             newPatrolBoatOne.style.height = "3rem";
             newPatrolBoatOne.style.gridArea = "9 / 5 / 10 / 7";
+            newPatrolBoatOne.textContent = "Patrol Boat";
         }
         setRotationState("default");
     }
@@ -140,6 +146,12 @@ export function populateDialogOne() {
     destroyerOne.className = "destroyer-one";
     submarineOne.className = "submarine-one";
     patrolBoatOne.className = "patrol-boat-one";
+
+    carrierOne.textContent = "Carrier";
+    battleshipOne.textContent = "Battleship";
+    destroyerOne.textContent = "Destroyer";
+    submarineOne.textContent = "Submarine";
+    patrolBoatOne.textContent = "Patrol Boat";
 
     carrierOne.draggable = "true";
     battleshipOne.draggable = "true";

@@ -272,6 +272,8 @@ input[type="radio"] {
     display: flex;
     justify-content: center;
     gap: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
 }
 
 .player-one-dialog-board {
@@ -365,6 +367,14 @@ input[type="radio"] {
     word-wrap: break-word;
     overflow-wrap:break-word;
     word-break: break-word;
+}
+
+.carrier-one:hover,
+.battleship-one:hover,
+.destroyer-one:hover,
+.submarine-one:hover,
+.patrol-boat-one:hover {
+    cursor: grab;
 }
 
 /* Place Ships Two Dialog */
@@ -491,6 +501,14 @@ input[type="radio"] {
     word-wrap: break-word;
     overflow-wrap:break-word;
     word-break: break-word;
+}
+
+.carrier-two:hover,
+.battleship-two:hover,
+.destroyer-two:hover,
+.submarine-two:hover,
+.patrol-boat-two:hover {
+    cursor: grab;
 }
 
 /* Main Game Display */

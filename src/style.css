@@ -242,6 +242,7 @@ input[type="radio"] {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    margin-top: 0.5rem;
 }
 
 .rotate-button,
@@ -288,7 +289,7 @@ input[type="radio"] {
 .dialog-one-ships-container {
     width: 21rem;
     height: 30rem;
-    border: 1px solid black;
+    border: 1px solid var(--font-default);
     display: grid;
     grid-template-columns: repeat(7, 3rem);
     grid-template-rows: repeat(10, 3rem);
@@ -307,6 +308,8 @@ input[type="radio"] {
     word-wrap: break-word;
     overflow-wrap:break-word;
     word-break: break-word;
+    color: var(--bg);
+    border-radius: 10px;
 }
 
 .battleship-one {
@@ -322,6 +325,8 @@ input[type="radio"] {
     word-wrap: break-word;
     overflow-wrap:break-word;
     word-break: break-word;
+    color: var(--bg);
+    border-radius: 10px;
 }
 
 .destroyer-one {
@@ -337,6 +342,8 @@ input[type="radio"] {
     word-wrap: break-word;
     overflow-wrap:break-word;
     word-break: break-word;
+    color: var(--bg);
+    border-radius: 10px;
 }
 
 .submarine-one {
@@ -352,6 +359,8 @@ input[type="radio"] {
     word-wrap: break-word;
     overflow-wrap:break-word;
     word-break: break-word;
+    color: var(--bg);
+    border-radius: 10px;
 }
 
 .patrol-boat-one {
@@ -367,6 +376,8 @@ input[type="radio"] {
     word-wrap: break-word;
     overflow-wrap:break-word;
     word-break: break-word;
+    color: var(--bg);
+    border-radius: 10px;
 }
 
 .carrier-one:hover,
@@ -441,6 +452,8 @@ input[type="radio"] {
     word-wrap: break-word;
     overflow-wrap:break-word;
     word-break: break-word;
+    color: var(--bg);
+    border-radius: 10px;
 }
 
 .battleship-two {
@@ -456,6 +469,8 @@ input[type="radio"] {
     word-wrap: break-word;
     overflow-wrap:break-word;
     word-break: break-word;
+    color: var(--bg);
+    border-radius: 10px;
 }
 
 .destroyer-two {
@@ -471,6 +486,8 @@ input[type="radio"] {
     word-wrap: break-word;
     overflow-wrap:break-word;
     word-break: break-word;
+    color: var(--bg);
+    border-radius: 10px;
 }
 
 .submarine-two {
@@ -486,6 +503,8 @@ input[type="radio"] {
     word-wrap: break-word;
     overflow-wrap:break-word;
     word-break: break-word;
+    color: var(--bg);
+    border-radius: 10px;
 }
 
 .patrol-boat-two {
@@ -501,6 +520,8 @@ input[type="radio"] {
     word-wrap: break-word;
     overflow-wrap:break-word;
     word-break: break-word;
+    color: var(--bg);
+    border-radius: 10px;
 }
 
 .carrier-two:hover,

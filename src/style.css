@@ -76,8 +76,11 @@ h6 {
 
 :root {
     --font-default: #33fd33;
+    --green: #004300;
     --bg: #062306;
     --bg-dark: #041604;
+    --red: #c72c23;
+    --grey: #586457;
 }
 
 body {

@@ -237,6 +237,37 @@ input[type="radio"] {
     margin-top: 4rem;
 }
 
+.dialog-one-buttons-container {
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.rotate-button,
+.random-button,
+.reset-button-one,
+.play-button-one {
+    background-color: var(--bg);
+    border: 1px solid var(--font-default);
+    color: var(--font-default);
+    padding: 0.2rem 0.5rem;
+    margin-top: 0.2rem;
+    cursor: pointer;
+}
+
+.rotate-button:hover,
+.random-button:hover,
+.reset-button-one:hover,
+.play-button-one:hover {
+    background-color: var(--font-default);
+    border: 1px solid var(--font-default);
+    color: var(--bg);
+    padding: 0.2rem 0.5rem;
+    margin-top: 0.2rem;
+    cursor: pointer;
+}
+
 .dialog-one-content {
     display: flex;
     justify-content: center;

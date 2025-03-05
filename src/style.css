@@ -663,3 +663,28 @@ input[type="radio"] {
 [data-space-state="hidden-ship"][data-hit-status="hit"] {
     background-color: var(--red);
 }
+
+.credit {
+    color: var(--font-default);
+    position: absolute;
+    bottom: 2rem;
+    width: 20rem;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.credit > a {
+    color: var(--font-default);
+    text-decoration: none;
+}
+
+.credit > a:hover {
+    color: var(--green);
+}
+
+.gh-icon {
+    width: 1rem;
+    height: 1rem;
+}

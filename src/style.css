@@ -141,6 +141,7 @@ body {
 #input-player-2 {
     background-color: var(--bg);
     border: 1px solid var(--font-default);
+    border-radius: 5px;
     color: var(--font-default);
     padding-left: 1rem;
     transition: all 0.3s ease;
@@ -162,6 +163,7 @@ body {
 
 .radio-buttons {
     border: 1px solid var(--font-default);
+    border-radius: 5px;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -193,6 +195,7 @@ input[type="radio"] {
     color: var(--font-default);
     background-color: var(--bg);
     border: 1px solid var(--font-default);
+    border-radius: 5px;
     cursor: pointer;
     transition: all 0.3s ease;
     font-weight: bold;
@@ -230,6 +233,7 @@ input[type="radio"] {
     width: 20rem;
     min-height: 5rem;
     border: 1px solid var(--font-default);
+    border-radius: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -252,6 +256,7 @@ input[type="radio"] {
 .play-button-one {
     background-color: var(--bg);
     border: 1px solid var(--font-default);
+    border-radius: 5px;
     color: var(--font-default);
     padding: 0.2rem 0.5rem;
     margin-top: 0.2rem;
@@ -415,6 +420,7 @@ input[type="radio"] {
     width: 20rem;
     min-height: 5rem;
     border: 1px solid var(--font-default);
+    border-radius: 5px;
     color: var(--font-default);
     display: flex;
     justify-content: center;
@@ -445,6 +451,7 @@ input[type="radio"] {
 .play-button-two {
     background-color: var(--bg);
     border: 1px solid var(--font-default);
+    border-radius: 5px;
     color: var(--font-default);
     padding: 0.2rem 0.5rem;
     margin-top: 0.2rem;
@@ -580,6 +587,7 @@ input[type="radio"] {
     width: 25rem;
     height: 5rem;
     border: 1px solid var(--font-default);
+    border-radius: 5px;
     margin-top: 4rem;
     color: var(--font-default);
     display: flex;
@@ -619,6 +627,7 @@ input[type="radio"] {
 .receive-device-button,
 .main-menu-button {
     border: 1px solid var(--font-default);
+    border-radius: 5px;
     color: var(--font-default);
     background-color: var(--bg);
     cursor: pointer;

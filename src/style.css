@@ -91,6 +91,7 @@ body {
     flex-direction: column;
     align-items: center;
     font-family: "OCR A Extended", "Impact", Arial, Helvetica, sans-serif;
+    background-color: var(--bg);
 }
 
 /* Start Dialog Page */
@@ -577,13 +578,31 @@ input[type="radio"] {
 /* Main Game Display */
 .game-information-container {
     width: 25rem;
-    height: 4rem;
-    border: 1px solid black;
+    height: 5rem;
+    border: 1px solid var(--font-default);
+    margin-top: 4rem;
+    color: var(--font-default);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-information-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-buttons-container {
+    margin-top: 0.5rem;
+    min-height: 2rem;
 }
 
 .game-container {
     display: flex;
     gap: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 4rem;
 }
 
 .player-one-board-container,
@@ -596,10 +615,29 @@ input[type="radio"] {
     grid-template-rows: repeat(10, 3rem);
 }
 
+.pass-device-button,
+.receive-device-button,
+.main-menu-button {
+    border: 1px solid var(--font-default);
+    color: var(--font-default);
+    background-color: var(--bg);
+    cursor: pointer;
+    padding: 0.2rem 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.pass-device-button:hover,
+.receive-device-button:hover,
+.main-menu-button:hover {
+    background-color: var(--font-default);
+    color: var(--bg);
+}
+
 .grid-box {
     width: 3rem;
     height: 3rem;
     border: 1px solid var(--font-default);
+    cursor: crosshair;
 }
 
 [data-space-state="water"] {

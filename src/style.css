@@ -227,7 +227,7 @@ input[type="radio"] {
 
 .dialog-one-header {
     width: 20rem;
-    height: 5rem;
+    min-height: 5rem;
     border: 1px solid var(--font-default);
     display: flex;
     justify-content: center;
@@ -280,7 +280,7 @@ input[type="radio"] {
 .player-one-dialog-board {
     width: 30rem;
     height: 30rem;
-    border: 1px solid black;
+    border: 1px solid var(--font-default);
     display: grid;
     grid-template-columns: repeat(10, 3rem);
     grid-template-rows: repeat(10, 3rem);
@@ -411,7 +411,7 @@ input[type="radio"] {
 
 .dialog-two-header-container {
     width: 20rem;
-    height: 5rem;
+    min-height: 5rem;
     border: 1px solid black;
 }
 
@@ -557,11 +557,11 @@ input[type="radio"] {
 .grid-box {
     width: 3rem;
     height: 3rem;
-    border: 1px solid black;
+    border: 1px solid var(--font-default);
 }
 
 [data-space-state="water"] {
-    background-color: var(--green);
+    background-color: var(--bg);
 }
 
 [data-space-state="water"][data-hit-status="miss"] {

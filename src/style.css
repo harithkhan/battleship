@@ -398,6 +398,7 @@ input[type="radio"] {
     flex-direction: column;
     align-items: center;
     padding: 0;
+    background-color: var(--bg);
 }
 
 .place-ships-two:not([open]) {
@@ -405,20 +406,61 @@ input[type="radio"] {
 }
 
 .place-ships-two::backdrop {
-    background-color: white;
+    background-color: var(--bg);
     opacity: 1;
 }
 
 .dialog-two-header-container {
     width: 20rem;
     min-height: 5rem;
-    border: 1px solid black;
+    border: 1px solid var(--font-default);
+    color: var(--font-default);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
 }
 
 .dialog-two-content {
     display: flex;
     justify-content: center;
     gap: 2rem;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+}
+
+.dialog-two-buttons-container {
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.rotate-button-two,
+.random-button-two,
+.reset-button-two,
+.place-button-two,
+.play-button-two {
+    background-color: var(--bg);
+    border: 1px solid var(--font-default);
+    color: var(--font-default);
+    padding: 0.2rem 0.5rem;
+    margin-top: 0.2rem;
+    cursor: pointer;
+}
+
+.rotate-button-two:hover,
+.random-button-two:hover,
+.reset-button-two:hover,
+.place-button-two:hover,
+.play-button-two:hover {
+    background-color: var(--font-default);
+    border: 1px solid var(--font-default);
+    color: var(--bg);
+    padding: 0.2rem 0.5rem;
+    margin-top: 0.2rem;
+    cursor: pointer;
 }
 
 .two-player-dialog-board {
@@ -433,7 +475,7 @@ input[type="radio"] {
 .dialog-two-ships-container {
     width: 21rem;
     height: 30rem;
-    border: 1px solid black;
+    border: 1px solid var(--font-default);    
     display: grid;
     grid-template-columns: repeat(7, 3rem);
     grid-template-rows: repeat(10, 3rem);
@@ -577,7 +619,7 @@ input[type="radio"] {
 }
 
 [data-space-state="hidden-ship"] {
-    background-color: var(--green);
+    background-color: var(--bg);
 }
 
 [data-space-state="hidden-ship"][data-hit-status="hit"] {

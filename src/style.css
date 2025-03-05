@@ -221,7 +221,7 @@ input[type="radio"] {
 }
 
 .place-ships-one::backdrop {
-    background-color: white;
+    background-color: var(--bg);
     opacity: 1;
 }
 
